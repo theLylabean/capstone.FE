@@ -1,8 +1,8 @@
-const Follows = () => {
+const Home = () => {
 
     return (
         <h1>Hello World</h1>
     )
 }
 
-export default Follows;
+export default Home;
