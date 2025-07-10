@@ -6,6 +6,7 @@ import Account from './components/users/Account.jsx';
 import Home from './components/UI/Home.jsx';
 import NavBar from './components/UI/NavBar.jsx';
 import Footer from './components/UI/Footer.jsx';
+import Events from './components/events/Events.jsx';
 import './css/App.css';
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
                       /> : <Navigate to='/login' replace />
             } 
           />
+          <Route path="/events" element={<Events/>}/>
         </Routes>
       </main>
       <Footer />
