@@ -1,8 +1,8 @@
-const baseUrl = 'https://localhost:3000/api';
+const baseUrl = 'http://localhost:3000/auth';
 
 const createUser = async (first_name, last_name, email, username, password) => {
     try {
-        const res = await fetch(`${baseUrl}/users/register`, {
+        const res = await fetch(`${baseUrl}/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ first_name, last_name, email, username, password })
@@ -16,7 +16,7 @@ const createUser = async (first_name, last_name, email, username, password) => {
 
 const getLogin = async (username, password) => {
     try {
-        const res = await fetch(`${baseUrl}/users/login`, {
+        const res = await fetch(`${baseUrl}/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })

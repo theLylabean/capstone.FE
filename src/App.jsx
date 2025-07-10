@@ -6,34 +6,53 @@ import Account from './components/users/Account.jsx';
 import Home from './components/UI/Home.jsx';
 import NavBar from './components/UI/NavBar.jsx';
 import Footer from './components/UI/Footer.jsx';
-import './App.css';
+import './css/App.css';
 
 function App() {
-  const [token, setToken] = useState(() => localStorage.getItem('authToken'));
+  const [token, setToken] = useState(() => localStorage.getItem('token'));
+  const [user, setUser] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    username: '',
+    password: ''
+  })
+
   useEffect(() => {
-    const storedToken = localStorage.getItem('authToken');
+    const storedToken = localStorage.getItem('token');
     if (storedToken) {
       setToken(storedToken);
     }
   }, []);
+  
   return (
     <>
-      <Router>
-        <NavBar />
-        <main className='app-content'>
-          <Routes>
-            <Route path='/' element={ <Home /> } />
-            <Route path='/register' element={ <Register /> } />
-            <Route path='/login' element={ <Login /> } />
-            <Route 
-              path='/account' 
-              element={ 
-                token ? <Account token={token} /> : <Navigate to='/login' replace />
-              } 
-            />
-          </Routes>
-        </main>
-      </Router>
+      <NavBar />
+      <main className='app-content'>
+        <Routes>
+          <Route path='/' element={ <Home /> } />
+          <Route path='/register' element={ <Register /> } />
+          <Route 
+            path='/login' 
+            element={ 
+              <Login 
+                setUser={setUser}
+                setToken={setToken}
+              /> 
+            } 
+          />
+          <Route 
+            path='/account' 
+            element={ 
+              token ? <Account 
+                        token={token}
+                        user={user}
+                        setUser={setUser} 
+                      /> : <Navigate to='/login' replace />
+            } 
+          />
+        </Routes>
+      </main>
       <Footer />
     </>
   )
