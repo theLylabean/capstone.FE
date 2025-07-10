@@ -1,8 +1,8 @@
-const Login = () => {
+const NavBar = () => {
 
     return (
         <h1>Hello World</h1>
     )
 }
 
-export default Login;
+export default NavBar;
