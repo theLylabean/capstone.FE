@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigate, Route, Router, Routes } from 'react-router-dom';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Register from './components/users/Register.jsx';
 import Login from './components/users/Login.jsx';
 import Account from './components/users/Account.jsx';
@@ -7,6 +7,7 @@ import Home from './components/UI/Home.jsx';
 import NavBar from './components/UI/NavBar.jsx';
 import Footer from './components/UI/Footer.jsx';
 import Events from './components/events/Events.jsx';
+import Resources from './components/resources/Resources.jsx';
 import './css/App.css';
 
 function App() {
@@ -52,7 +53,8 @@ function App() {
                       /> : <Navigate to='/login' replace />
             } 
           />
-          <Route path="/events" element={<Events/>}/>
+          <Route path='/events' element={<Events />}/>
+          <Route path='/resources' element={<Resources />} />
         </Routes>
       </main>
       <Footer />
