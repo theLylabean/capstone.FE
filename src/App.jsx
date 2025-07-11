@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AllPostsPage from "./pages/AllPostsPage";
@@ -8,7 +7,6 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Register from './components/users/Register.jsx';
 import Login from './components/users/Login.jsx';
 import Account from './components/users/Account.jsx';
-import Home from './components/UI/Home.jsx';
 import NavBar from './components/UI/NavBar.jsx';
 import Footer from './components/UI/Footer.jsx';
 import './css/App.css';
