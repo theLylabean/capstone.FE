@@ -1,9 +1,12 @@
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AllPostsPage from "./pages/AllPostsPage";
 import { useEffect, useState } from 'react';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Register from './components/users/Register.jsx';
 import Login from './components/users/Login.jsx';
 import Account from './components/users/Account.jsx';
-import Home from './components/UI/Home.jsx';
+//import Home from './components/UI/Home.jsx';
 import NavBar from './components/UI/NavBar.jsx';
 import Footer from './components/UI/Footer.jsx';
 import Events from './components/events/Events.jsx';
@@ -20,6 +23,7 @@ function App() {
     password: ''
   })
 
+
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
@@ -32,7 +36,7 @@ function App() {
       <NavBar />
       <main className='app-content'>
         <Routes>
-          <Route path='/' element={ <Home /> } />
+          <Route path='/' element={ <AllPostsPage /> } />
           <Route path='/register' element={ <Register /> } />
           <Route 
             path='/login' 
@@ -58,8 +62,9 @@ function App() {
         </Routes>
       </main>
       <Footer />
+
     </>
-  )
+  );
 }
 
-export default App
+export default App;
