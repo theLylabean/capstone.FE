@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigate, Route, Router, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Register from './components/users/Register.jsx';
 import Login from './components/users/Login.jsx';
 import Account from './components/users/Account.jsx';
