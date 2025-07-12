@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
+import ResourceForm from "./ResourceForm";
 
 function Resources(){
     const [resources, setResources] = useState();
 
-    const baseUrl = 'http://localhost:3000/api';
+    const baseUrl = import.meta.env.VITE_API_URL;
 
     useEffect(()=>{
         const getResources = async() => {
             try{
                 const res = await fetch(`${baseUrl}/resources`);
-                const result = await res.json();
-                setResources(result);
+                const data = await res.json();
+                setResources(data);
             } catch(err) {
                 console.error(err);
             }
@@ -37,6 +38,14 @@ function Resources(){
         </div>
 
 {/* AUTHENTICATED USERS ONLY */}
+        <div>
+            {/* {token ? (
+                <ResourceForm />
+            ): (
+                <p>Please log in to create resource</p>
+            )} */}
+        </div>
+
         <div>
             <button>Create Resource Post</button>
             <button>Edit Post</button>
