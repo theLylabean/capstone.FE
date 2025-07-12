@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function Events(){
-    const [getEvents, setGetEvents] = useState();
+    const [getEvents, setGetEvents] = useState({});
     const { id } = useParams();
 
     const baseUrl = 'http://localhost:3000/api';
@@ -39,6 +39,20 @@ function Events(){
             ) : (
                 <p>No events to show.</p>
             )}
+        </div>
+
+
+{/* AUTHENTICATED USERS ONLY */}
+        <div>
+            {/* {token ?
+                <button>Create Event</button>
+                : null
+            }    */}
+        </div>
+
+        <div>
+            <button>Create Event Post</button>
+            <button>Edit Post</button>
         </div>
         </>
     )

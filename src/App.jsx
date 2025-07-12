@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AllPostsPage from "./pages/AllPostsPage";
 import { useEffect, useState } from 'react';
-import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Navigate} from 'react-router-dom';
 import Register from './components/users/Register.jsx';
 import Login from './components/users/Login.jsx';
 import Account from './components/users/Account.jsx';
@@ -57,8 +57,8 @@ function App() {
                       /> : <Navigate to='/login' replace />
             } 
           />
-          <Route path='/events' element={<Events />}/>
-          <Route path='/resources' element={<Resources />} />
+          <Route path='/events' element={<Events token={token}/>}/>
+          <Route path='/resources' element={<Resources token={token}/>} />
         </Routes>
       </main>
       <Footer />

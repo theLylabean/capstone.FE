@@ -35,6 +35,12 @@ function Resources(){
                 <p>No resources to show</p>
             )}
         </div>
+
+{/* AUTHENTICATED USERS ONLY */}
+        <div>
+            <button>Create Resource Post</button>
+            <button>Edit Post</button>
+        </div>
         </>
     )
 }
