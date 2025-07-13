@@ -10,6 +10,7 @@ import NavBar from "./components/UI/NavBar.jsx";
 import Footer from "./components/UI/Footer.jsx";
 import Events from "./components/events/Events.jsx";
 import Resources from "./components/resources/Resources.jsx";
+import PostDetailsPage from "./pages/PostDetailsPage.jsx";
 import "./css/App.css";
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
           />
           <Route path="/events" element={<Events token={token} />} />
           <Route path="/resources" element={<Resources token={token} />} />
+          <Route path="/posts/:id" element={<PostDetailsPage token={token} />} />
         </Routes>
       </main>
       <Footer />
