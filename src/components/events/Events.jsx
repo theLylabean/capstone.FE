@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import EventForm from "./EventForm";
 
 function Events(){
-    const [getEvents, setGetEvents] = useState();
+    const [getEvents, setGetEvents] = useState({});
     const { id } = useParams();
 
-    const baseUrl = 'http://localhost:3000/api';
+    const baseUrl = import.meta.env.VITE_API_URL;
 
     useEffect(()=>{
         const getAllEvents = async() => {
@@ -39,6 +40,21 @@ function Events(){
             ) : (
                 <p>No events to show.</p>
             )}
+        </div>
+
+
+{/* AUTHENTICATED USERS ONLY */}
+        <div>
+            {/* {token ? (
+                <EventForm />
+            ) : (
+                <p>Please log in to create an event
+                )}    */}
+        </div>
+
+        <div>
+            <button>Create Event Post</button>
+            <button>Edit Post</button>
         </div>
         </>
     )

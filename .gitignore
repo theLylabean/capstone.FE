@@ -158,3 +158,4 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 >>>>>>> 0a98a349a2034a68c94116a73af5db6bc9931024
+.env
