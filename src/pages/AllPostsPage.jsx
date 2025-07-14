@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "./AllpostsPage.css"
 
 export default function AllPostsPage({ token }) {
   const [posts, setPosts] = useState([]);
@@ -39,9 +40,17 @@ export default function AllPostsPage({ token }) {
 
   const handleAddComment = async (e, postId) => {
     e.preventDefault();
-    setPosting(true);
     setPostError(null);
 
+    //will trim the input and check if it's empty
+
+    const trimmedComment = newComment.trim();
+    if (!trimmedComment) {
+      setPostError("Comment cannot be empty.");
+      return;
+    }
+
+    setPosting(true);
     try {
       const response = await fetch(
         `http://localhost:3000/api/posts/${postId}/comments`,
@@ -51,7 +60,7 @@ export default function AllPostsPage({ token }) {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ content: newComment[postId] }),
+          body: JSON.stringify({ content: trimmedComment[postId] }),
         }
       );
       if (!response.ok) {
@@ -83,31 +92,46 @@ export default function AllPostsPage({ token }) {
   return (
     <div className="all-posts-page">
       <h1>All Posts</h1>
-      <ul>
+      <div className="posts-list">
         {posts.map((post) => (
-          <li key={post.id}>
+          <div className="post-card" key={post.id}>
             <Link to={`/posts/${post.id}`}>
               <h2>{post.title}</h2>
             </Link>
             <p>
-              {post.community} community - by {post.username}
+              <strong>Community:</strong> {post.community}
+            </p>
+            <p>
+              <strong>By:</strong> {post.username}
             </p>
             <p>{post.content}</p>
 
-            <h4>Comments:</h4>
-            {post.comments.length === 0 ? (
-              <p>No comments yet.</p>
-            ) : (
-              <ul>
-                {post.comments.map((comment) => (
-                  <li key={comment.id}>
-                    <strong>{comment.username}:</strong> {comment.content}
-                  </li>
-                ))}
-              </ul>
-            )}
+            <div className="comments-section">
+              <h4>Comments:</h4>
+              {post.comments.length === 0 ? (
+                <p>No comments yet.</p>
+              ) : (
+                <ul>
+                  {post.comments.map((comment) => (
+                    <li key={comment.id} className="comment-item">
+                      <div className="avatar">
+                        {comment.username[0].toUpperCase()}
+                      </div>
+                      <div className="comment-content">
+                        <strong>{comment.username}</strong>
+                        <p>{comment.content}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
             {token ? (
-              <form onSubmit={(e) => handleAddComment(e, post.id)}>
+              <form
+                className="comment-form"
+                onSubmit={(e) => handleAddComment(e, post.id)}
+              >
                 <textarea
                   value={newComment[post.id] || ""}
                   onChange={(e) =>
@@ -122,14 +146,14 @@ export default function AllPostsPage({ token }) {
                 <button type="submit" disabled={posting}>
                   {posting ? "Posting..." : "Add Comment"}
                 </button>
-                {postError && <p style={{ color: "red" }}>{postError}</p>}
+                {postError && <p className="error-message">{postError}</p>}
               </form>
             ) : (
-              <p>Please log in to add comment.</p>
+              <p className="login-prompt">Please log in to add a comment.</p>
             )}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
