@@ -15,7 +15,8 @@ function EventForm(){
     try {
         const res = await fetch(`${baseUrl}/events`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`},
             body: JSON.stringify({username, body, user_id: Number(user_id)}),
         });
 

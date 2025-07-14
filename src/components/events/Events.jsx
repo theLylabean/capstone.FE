@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import EventForm from "./EventForm";
 
-function Events(){
+function Events({token}){
     const [getEvents, setGetEvents] = useState({});
     const { id } = useParams();
+    // const token = localStorage.getItem("token");
 
     const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -45,11 +46,11 @@ function Events(){
 
 {/* AUTHENTICATED USERS ONLY */}
         <div>
-            {/* {token ? (
+            {token ? (
                 <EventForm />
             ) : (
-                <p>Please log in to create an event
-                )}    */}
+                <p>Please log in to create an event</p>
+            )}   
         </div>
 
         <div>
