@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import "./PostDetailsPage.css"
 export default function PostDetailsPage({ token }) {
   const { id } = useParams();
   const [post, setPost] = useState(null);
@@ -75,9 +75,9 @@ export default function PostDetailsPage({ token }) {
 
   console.log("Post details:", post);
 
-  if (loading) return <div>Loading post...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  if (!post) return <div>No post found.</div>;
+  if (loading) return <div className="loading">Loading post...</div>;
+  if (error) return <div className="error">Error: {error.message}</div>;
+  if (!post) return <div className="error">No post found.</div>;
 
   return (
     <div className="post-details-page">
@@ -90,19 +90,24 @@ export default function PostDetailsPage({ token }) {
       </p>
       <p>{post.content}</p>
       <h3>Comments</h3>
+      <div className="comments-section">
       {post.comments.length === 0 ? (
         <p>No comments yet.</p>
       ) : (
         <ul>
           {post.comments.map((comment) => (
-            <li key={comment.id}>
+            <li key={comment.id} className="comment-item">
+                <div className="avatar">{comment.username[0].toUpperCase()}</div>
+                <div className="comment-content">
               <strong>{comment.username}:</strong> {comment.content}
+              </div>
             </li>
+            
           ))}
         </ul>
       )}
       {token ? (
-        <form onSubmit={handleAddComment}>
+        <form className="comment-form" onSubmit={handleAddComment}>
           <textarea
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
@@ -117,6 +122,7 @@ export default function PostDetailsPage({ token }) {
       ) : (
         <p>Please log in to add a comment.</p>
       )}
+    </div>
     </div>
   );
 }

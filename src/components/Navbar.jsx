@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "../../pages/Navbar.css";
+import "../pages/Navbar.css";
 
-export default function Navbar() {
+export default function Navbar({theme, setTheme}) {
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
