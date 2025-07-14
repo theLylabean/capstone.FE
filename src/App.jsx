@@ -1,5 +1,3 @@
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AllPostsPage from "./pages/AllPostsPage";
 import { useEffect, useState } from 'react';
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
