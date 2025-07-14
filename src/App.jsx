@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 import Register from "./components/users/Register.jsx";
 import Login from "./components/users/Login.jsx";
 import Account from "./components/users/Account.jsx";
-//import Home from './components/UI/Home.jsx';
+// import Home from './components/UI/Home.jsx';
 import Navbar from "./components/Navbar.jsx";
 //import Footer from "./components/UI/Footer.jsx";
 import Events from "./components/events/Events.jsx";
@@ -16,6 +16,7 @@ import "./css/App.css";
 function App() {
   const [token, setToken] = useState(() => localStorage.getItem("token"));
   const [theme, setTheme] = useState("light");
+  const [currentUser, setCurrentUser] = useState(null);
 
   // On load, you could even load from localStorage:
   useEffect(() => {
@@ -44,7 +45,12 @@ function App() {
 
   return (
     <>
-      <Navbar theme={theme} setTheme={setTheme} />
+      <Navbar 
+        theme={theme} 
+        setTheme={setTheme} 
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}  
+      />
       <main className="app-content">
         <Routes>
           <Route path="/" element={<AllPostsPage />} />
