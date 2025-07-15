@@ -8,7 +8,6 @@ const createUser = async ({first_name, last_name, email, username, password}) =>
             body: JSON.stringify({ first_name, last_name, email, username, password })
         });
         const result = await res.json();
-        console.log('Raw response from /register:', result);
         return result;
     } catch (error) {
         console.error(error.message);
@@ -30,9 +29,11 @@ const getLogin = async (username, password) => {
     }
 }
 
-const getAccount = async ({ token }) => {
+const getAccount = async () => {
+    const token = localStorage.getItem('token');
+    console.log('Using token to fetch account: ', token)
     try {
-    const res = await fetch(`${baseUrl}/users/account`, {
+    const res = await fetch(`${baseUrl}/account`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

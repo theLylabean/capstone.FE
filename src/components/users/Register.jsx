@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { createUser } from "../../api/usersIndex";
 
 
-const Register = ({ setToken, setUser }) => {
+const Register = ({ setToken, setCurrentUser }) => {
     const navigate = useNavigate();
     const [signupError, setSignupError] = useState('');
     const [newUser, setNewUser] = useState({
@@ -27,7 +27,6 @@ const Register = ({ setToken, setUser }) => {
         setSignupError('');
 
         const { first_name, last_name, email, username, password, confirmPassword } = newUser;
-        console.log(newUser);
         if (!first_name || !last_name || !email || !username || !password || !confirmPassword) {
             setSignupError('Please fill out all fields.');
             return;
@@ -39,17 +38,13 @@ const Register = ({ setToken, setUser }) => {
         try {
             const { confirmPassword, ...userData } = newUser;
             const res = await createUser(userData);
-            console.log('Server response: ', res)
             if (res.token) {
                 localStorage.setItem('token', res.token);
                 setToken(res.token);
-                setUser(res.user);
                 navigate('/account');
             } else {
                 setSignupError(res.message || '** Invalid username or password **')
             }
-            console.log(setToken);
-            console.log(res.token);
         } catch (error) {
             console.error('Register error.', error.message);
             setSignupError('Register new user failed. Please try again.');
