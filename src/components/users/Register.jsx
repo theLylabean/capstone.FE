@@ -77,7 +77,69 @@ const Register = () => {
                             />
                         </div>
                     </div>
+                    <div className='form-row'>
+                        <div className='form-field'>
+                            <label>Email:&nbsp;</label>
+                            <input
+                                type='text'
+                                name='email'
+                                value={createUser.email}
+                                onChange={handleChange}
+                                placeholder='Enter Email Here'
+                            />
+                        </div>
+                        <div className='form-field'>
+                            <label>Username:&nbsp;</label>
+                            <input
+                                type='text'
+                                name='username'
+                                value={createUser.username}
+                                onChange={handleChange}
+                                placeholder='Enter Username Here'
+                            />
+                        </div>
+                    </div>
+                    <div className='form-row'>
+                        <div className='form-field'>
+                            <label>Password:&nbsp;</label>
+                            <input
+                                type='password'
+                                name='password'
+                                value={createUser.password}
+                                onChange={handleChange}
+                                placeholder='Enter Password Here'
+                            />
+                        </div>
+                        <div className='form-field'>
+                            <label>Confirm Password:&nbsp;</label>
+                            <input
+                                type='password'
+                                name='confirmPassword'
+                                value={createUser.confirmPassword}
+                                onChange={handleChange}
+                                placeholder='Enter Password Again'
+                            />
+                        </div>
+                    </div>
+                    <div className='form-button'>
+                        <button 
+                            type='submit'
+                            // disabled={
+                            //     !createUser.first_name ||
+                            //     !createUser.last_name ||
+                            //     !createUser.email ||
+                            //     !createUser.username ||
+                            //     !createUser.password ||
+                            //     !createUser.confirmPassword
+                            // }    
+                        >
+                            Create New User Account
+                        </button>
+                    </div>
                 </form>
+                <div className='error-container'>
+                    { signupError && <p className='error-message'>{ signupError }</p> }
+                </div>
             </div>
         </>
     )
