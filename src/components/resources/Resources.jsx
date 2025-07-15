@@ -83,7 +83,7 @@ function Resources() {
 
   return (
     <div className="all-posts-page">
-      <h1>RESOURCES</h1>
+      <h1>Resources</h1>
 
       <div className="posts-list">
         {resources.length > 0 ? (

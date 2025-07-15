@@ -167,6 +167,7 @@
     color: var(--accent);
 
 }
+
 button{
     margin-top: 12px;
     margin-right: 5px;
@@ -178,4 +179,15 @@ button{
     color: white;
     cursor: pointer;
     transition: background 0.3s;
+ }
+
+ input{
+       width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        resize: vertical;
+        transition: border-color 0.2s;
+        border-color: var(--accent);
  }
