@@ -57,10 +57,23 @@ function App() {
         <Routes>
           <Route path="/" element={<AllPostsPage />} />
           <Route path="/" element={<AllPostsPage token={token} />} />
-          <Route path="/register" element={<Register />} />
+          <Route 
+            path="/register" 
+            element={
+              <Register 
+              setUser={setCurrentUser}  
+              setToken={setToken}
+              />
+            } 
+          />
           <Route
             path="/login"
-            element={<Login setUser={setCurrentUser} setToken={setToken} />}
+            element={
+              <Login 
+                setUser={setCurrentUser} 
+                setToken={setToken} 
+              />
+            }
           />
           <Route
             path="/account"

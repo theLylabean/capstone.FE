@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:3000/auth';
 
-const createUser = async (first_name, last_name, email, username, password) => {
+const createUser = async ({first_name, last_name, email, username, password}) => {
     try {
         const res = await fetch(`${baseUrl}/register`, {
             method: 'POST',
@@ -8,6 +8,7 @@ const createUser = async (first_name, last_name, email, username, password) => {
             body: JSON.stringify({ first_name, last_name, email, username, password })
         });
         const result = await res.json();
+        console.log('Raw response from /register:', result);
         return result;
     } catch (error) {
         console.error(error.message);

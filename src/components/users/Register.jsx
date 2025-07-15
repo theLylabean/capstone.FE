@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { createUser } from "../../api/usersIndex";
 
 
-const Register = () => {
+const Register = ({ setToken, setUser }) => {
     const navigate = useNavigate();
     const [signupError, setSignupError] = useState('');
     const [newUser, setNewUser] = useState({
@@ -27,24 +27,29 @@ const Register = () => {
         setSignupError('');
 
         const { first_name, last_name, email, username, password, confirmPassword } = newUser;
+        console.log(newUser);
         if (!first_name || !last_name || !email || !username || !password || !confirmPassword) {
             setSignupError('Please fill out all fields.');
             return;
         }
-        if (!password !== confirmPassword) {
+        if (password !== confirmPassword) {
             setSignupError('Passwords do not match.');
             return;
         }
         try {
-            const res = await createUser();
+            const { confirmPassword, ...userData } = newUser;
+            const res = await createUser(userData);
+            console.log('Server response: ', res)
             if (res.token) {
                 localStorage.setItem('token', res.token);
                 setToken(res.token);
-                setUser(res);
+                setUser(res.user);
                 navigate('/account');
             } else {
-                setLoginError(response.message || '** Invalid username or password **')
+                setSignupError(res.message || '** Invalid username or password **')
             }
+            console.log(setToken);
+            console.log(res.token);
         } catch (error) {
             console.error('Register error.', error.message);
             setSignupError('Register new user failed. Please try again.');
@@ -61,7 +66,7 @@ const Register = () => {
                             <input 
                                 type='text'
                                 name='first_name'
-                                value={createUser.first_name}
+                                value={newUser.first_name}
                                 onChange={handleChange}
                                 placeholder='Enter First Name Here'
                             />
@@ -71,7 +76,7 @@ const Register = () => {
                             <input
                                 type='text'
                                 name='last_name'
-                                value={createUser.last_name}
+                                value={newUser.last_name}
                                 onChange={handleChange}
                                 placeholder='Enter Last Name Here'
                             />
@@ -83,7 +88,7 @@ const Register = () => {
                             <input
                                 type='text'
                                 name='email'
-                                value={createUser.email}
+                                value={newUser.email}
                                 onChange={handleChange}
                                 placeholder='Enter Email Here'
                             />
@@ -93,7 +98,7 @@ const Register = () => {
                             <input
                                 type='text'
                                 name='username'
-                                value={createUser.username}
+                                value={newUser.username}
                                 onChange={handleChange}
                                 placeholder='Enter Username Here'
                             />
@@ -105,7 +110,7 @@ const Register = () => {
                             <input
                                 type='password'
                                 name='password'
-                                value={createUser.password}
+                                value={newUser.password}
                                 onChange={handleChange}
                                 placeholder='Enter Password Here'
                             />
@@ -115,7 +120,7 @@ const Register = () => {
                             <input
                                 type='password'
                                 name='confirmPassword'
-                                value={createUser.confirmPassword}
+                                value={newUser.confirmPassword}
                                 onChange={handleChange}
                                 placeholder='Enter Password Again'
                             />
