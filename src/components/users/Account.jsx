@@ -8,7 +8,7 @@ const Account = ({ user, setUser }) => {
     useEffect(() => {
         const token = localStorage.getItem('token')
         const getAccountDetailsAPI = async () => {
-            const res = await getAccount();
+            const res = await getAccount({token});
             setUser(res);
         }
         getAccountDetailsAPI();

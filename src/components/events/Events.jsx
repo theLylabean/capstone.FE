@@ -1,64 +1,169 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import EventForm from "./EventForm";
+import { useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
-function Events({token}){
-    const [getEvents, setGetEvents] = useState({});
-    const { id } = useParams();
-    // const token = localStorage.getItem("token");
+function Events() {
+  const [events, setEvents] = useState([]);
+  const [body, setBody] = useState("");
+  const [error, setError] = useState(null);
+  const [editId, setEditId] = useState(null);
+  const [editBody, setEditBody] = useState("");
 
-    const baseUrl = import.meta.env.VITE_API_URL;
+  const token = localStorage.getItem("token");
+  const baseUrl = import.meta.env.VITE_API_URL;
 
-    useEffect(()=>{
-        const getAllEvents = async() => {
-            try{
-                const res = await fetch(`${baseUrl}/events`);
-                const result = await res.json();
-                console.log('fetched events:', result)
-                setGetEvents(result);
-            } catch (err){
-                console.error({error: 'Error fetching events:'});
-            }
+  const decoded = token ? jwtDecode(token) : null;
+  const user_id = decoded?.id;
+  const username = decoded?.username;
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch(`${baseUrl}/events`);
+        const data = await res.json();
+        setEvents(data);
+      } catch (err) {
+        console.error("Error fetching events:", err);
+      }
+    };
+    fetchEvents();
+  }, [baseUrl]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    try {
+      const res = await fetch(`${baseUrl}/events`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ username, body, user_id: Number(user_id) }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setEvents();
+        setBody("");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("An error occurred while creating the event.");
+    }
+  };
+
+  
+  const handleEdit = (id, body) => {
+      setEditId(id);
+      setEditBody(body);
+    };
+    
+    const handleUpdate = async (id) => {
+        try {
+            const res = await fetch(`${baseUrl}/events/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ body: editBody }),
+            });
+            
+            if (res.ok) {
+                const updated = await res.json();
+                setEvents((prev) =>
+                    prev.map((event) => (event.id === id ? updated : event))
+            );
+            setEditId(null);
+            setEditBody("");
+        } else {
+            alert("Failed to update event.");
         }
-        getAllEvents();
-    }, [])
+    } catch (err) {
+        console.error(err);
+        alert("An error occurred while updating the event.");
+    }
+};
 
-    return(
-        <>
-        <div>
-            <h1>Events</h1>
-        </div>
+const handleDelete = async (id) => {
+  try {
+    const res = await fetch(`${baseUrl}/events/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-        <div>
-            {Array.isArray(getEvents) && getEvents.length > 0 ? (
-                getEvents.map((event) => (
-                    <div key={event.id} style={{ marginBottom: "1rem" }}>
-                        <h2>{event.username}</h2>
-                        <h3>{event.body}</h3>
-                        <h4>{event.created_at}</h4>
+    if (res.ok) {
+      setEvents((prev) => prev.filter((event) => event.id !== id));
+    } else {
+      alert("Failed to delete event.");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("An error occurred while deleting the event.");
+  }
+};
+
+  return (
+    <>
+      <h1>Events</h1>
+
+      <div>
+        {events.length > 0 ? (
+          events.map((event) => (
+            <div key={event.id} style={{ marginBottom: "1rem" }}>
+              <h2>{event.username}</h2>
+
+              {editId === event.id ? (
+                <>
+                  <textarea
+                    value={editBody}
+                    onChange={(e) => setEditBody(e.target.value)}
+                  />
+                  <button onClick={() => handleUpdate(event.id)}>Save</button>
+                  <button onClick={() => setEditId(null)}>Cancel</button>
+                </>
+              ) : (
+                <>
+                  <p>{event.body}</p>
+                  <small>{event.created_at}</small>
+                  {event.user_id === user_id && (
+                    <div>
+                      <button onClick={() => handleEdit(event.id, event.body)}>
+                        Edit
+                      </button>
+                      <button onClick={() => handleDelete(event.id)}>
+                        Delete
+                      </button>
                     </div>
-                ))
-            ) : (
-                <p>No events to show.</p>
-            )}
-        </div>
+                  )}
+                </>
+              )}
+            </div>
+          ))
+        ) : (
+          <p>No events to show.</p>
+        )}
+      </div>
 
-
-{/* AUTHENTICATED USERS ONLY */}
-        <div>
-            {token ? (
-                <EventForm />
-            ) : (
-                <p>Please log in to create an event</p>
-            )}   
-        </div>
-
-        <div>
-            <button>Create Event Post</button>
-            <button>Edit Post</button>
-        </div>
-        </>
-    )
+      {token ? (
+        <form onSubmit={handleSubmit}>
+          <label>Event Description:</label>
+          <textarea
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+            required
+          />
+          <button type="submit">Create Event</button>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </form>
+      ) : (
+        <p>Please log in to create an event.</p>
+      )}
+    </>
+  );
 }
 
 export default Events;
