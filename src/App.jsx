@@ -6,7 +6,7 @@ import Register from "./components/users/Register.jsx";
 import Login from "./components/users/Login.jsx";
 import Account from "./components/users/Account.jsx";
 // import Home from './components/UI/Home.jsx';
-import Navbar from "./components/Navbar.jsx";
+import Navbar from "./components/UI/NavBar.jsx";
 //import Footer from "./components/UI/Footer.jsx";
 import Events from "./components/events/Events.jsx";
 import Resources from "./components/resources/Resources.jsx";
@@ -14,7 +14,7 @@ import PostDetailsPage from "./pages/PostDetailsPage.jsx";
 import "./css/App.css";
 
 function App() {
-  const [token, setToken] = useState(() => localStorage.getItem("token"));
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [theme, setTheme] = useState("light");
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -28,20 +28,22 @@ function App() {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
-  const [user, setUser] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    username: "",
-    password: "",
-  });
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      setToken(storedToken);
+    if (token) {
+      const getUser = async () => {
+        const response = await fetch('http://localhost:3000/auth/account',
+          {
+            headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
+          }
+        );
+        const result = await response.json();
+        console.log(result);
+        setCurrentUser(result);
+      }
+      getUser();
     }
-  }, []);
+  }, [token]);
 
   return (
     <>
@@ -58,13 +60,13 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route
             path="/login"
-            element={<Login setUser={setUser} setToken={setToken} />}
+            element={<Login setUser={setCurrentUser} setToken={setToken} />}
           />
           <Route
             path="/account"
             element={
               token ? (
-                <Account token={token} user={user} setUser={setUser} />
+                <Account token={token} user={currentUser} setUser={setCurrentUser} />
               ) : (
                 <Navigate to="/login" replace />
               )

@@ -13,17 +13,17 @@ const Account = ({ user, setUser }) => {
         }
         getAccountDetailsAPI();
     }, []);
-
+console.log(user);
     return (
         <>
             <div className='account-page-container'>
                 <h1>
-                    Welcome to your Account Page, {user?.first_name}!
+                    Welcome to your Account Page, {user?.firstName}!
                 </h1>
                 <div className='personal-info'>
-                    <p><u>Name:</u>&nbsp;{user.first_name}&nbsp;{user.last_name}</p>
-                    <p><u>Email:</u>&nbsp;{user.email}</p>
-                    <p><u>Username:</u>&nbsp;{user.username}</p>
+                    <p><u>Name:</u>&nbsp;{user?.firstName}&nbsp;{user?.lastName}</p>
+                    <p><u>Email:</u>&nbsp;{user?.email}</p>
+                    <p><u>Username:</u>&nbsp;{user?.username}</p>
                 </div>
             </div>
         </>

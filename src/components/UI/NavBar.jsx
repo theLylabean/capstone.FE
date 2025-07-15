@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../../pages/Navbar.css";
 
-export default function Navbar({ currentUser, setCurrentUser }) {
+export default function Navbar({ currentUser, setCurrentUser, theme, setTheme }) {
   const navigate = useNavigate();
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
