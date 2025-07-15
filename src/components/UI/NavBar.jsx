@@ -33,7 +33,7 @@ export default function Navbar({ currentUser, setCurrentUser, theme, setTheme })
         ) : (
           <>
             <Link to='/login'>Login</Link>
-            <Link to='/signUpForm'>Sign Up</Link>
+            <Link to='/register'>Sign Up</Link>
           </>
         )}
       </div>

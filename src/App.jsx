@@ -11,6 +11,7 @@ import Navbar from "./components/UI/NavBar.jsx";
 import Events from "./components/events/Events.jsx";
 import Resources from "./components/resources/Resources.jsx";
 import PostDetailsPage from "./pages/PostDetailsPage.jsx";
+import { getAccount } from "./api/usersIndex.js";
 import "./css/App.css";
 
 function App() {
@@ -32,14 +33,14 @@ function App() {
   useEffect(() => {
     if (token) {
       const getUser = async () => {
-        const response = await fetch('http://localhost:3000/auth/account',
-          {
-            headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
-          }
-        );
-        const result = await response.json();
-        console.log(result);
-        setCurrentUser(result);
+        if (!token) return;
+        try {
+          const response = await getAccount();
+          setCurrentUser(response);
+        } catch (error) {
+          console.error('Failed to fetch user in App: ', error.message);
+          setCurrentUser(null);
+        }
       }
       getUser();
     }
@@ -57,16 +58,29 @@ function App() {
         <Routes>
           <Route path="/" element={<AllPostsPage />} />
           <Route path="/" element={<AllPostsPage token={token} />} />
-          <Route path="/register" element={<Register />} />
+          <Route 
+            path="/register" 
+            element={
+              <Register 
+              setCurrentUser={setCurrentUser}  
+              setToken={setToken}
+              />
+            } 
+          />
           <Route
             path="/login"
-            element={<Login setUser={setCurrentUser} setToken={setToken} />}
+            element={
+              <Login 
+                setCurrentUser={setCurrentUser} 
+                setToken={setToken} 
+              />
+            }
           />
           <Route
             path="/account"
             element={
               token ? (
-                <Account token={token} user={currentUser} setUser={setCurrentUser} />
+                <Account token={token} currentUser={currentUser} setCurrentUser={setCurrentUser} />
               ) : (
                 <Navigate to="/login" replace />
               )
