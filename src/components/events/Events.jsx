@@ -128,7 +128,7 @@ const handleDelete = async (id) => {
               ) : (
                 <>
                   <p>{event.body}</p>
-                  <small>{event.created_at}</small>
+                  <h4>{new Date(event.created_at).toLocaleDateString()}</h4>
                   {event.user_id === user_id && (
                     <div>
                       <button onClick={() => handleEdit(event.id, event.body)}>
