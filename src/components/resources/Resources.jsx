@@ -91,7 +91,6 @@ function Resources() {
             <div className="post-card" key={resource.id}>
               <h2>{resource.title}</h2>
               <h3>{resource.body}</h3>
-              <h4>{new Date(resource.created_at).toLocaleDateString()}</h4>
 
               {user_id === resource.user_id && token && (
                 <div>
