@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import "../../css/EventsResource.css";
 
 function Resources() {
   const [resources, setResources] = useState([]);
@@ -81,13 +82,13 @@ function Resources() {
   };
 
   return (
-    <>
+    <div className="all-posts-page">
       <h1>RESOURCES</h1>
 
-      <div>
+      <div className="posts-list">
         {resources.length > 0 ? (
           resources.map((resource) => (
-            <div key={resource.id}>
+            <div className="post-card" key={resource.id}>
               <h2>{resource.title}</h2>
               <h3>{resource.body}</h3>
               <h4>{new Date(resource.created_at).toLocaleDateString()}</h4>
@@ -110,7 +111,7 @@ function Resources() {
       {/* AUTHENTICATED USERS ONLY */}
       <div>
         {token ? (
-          <form onSubmit={handleSubmit}>
+          <form className="comment-form" onSubmit={handleSubmit}>
             <div>
               <label>Title:</label>
               <input
@@ -147,7 +148,7 @@ function Resources() {
           <p>Please log in to create a resource</p>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

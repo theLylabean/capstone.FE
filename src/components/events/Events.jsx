@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
+import "../../css/EventsResource.css";
 
 function Events() {
   const [events, setEvents] = useState([]);
@@ -107,13 +108,13 @@ const handleDelete = async (id) => {
 };
 
   return (
-    <>
+    <div className="all-posts-page">
       <h1>Events</h1>
 
-      <div>
+      <div className="posts-list">
         {events.length > 0 ? (
           events.map((event) => (
-            <div key={event.id} style={{ marginBottom: "1rem" }}>
+            <div className="post-card" key={event.id} style={{ marginBottom: "1rem" }}>
               <h2>{event.username}</h2>
 
               {editId === event.id ? (
@@ -149,7 +150,7 @@ const handleDelete = async (id) => {
       </div>
 
       {token ? (
-        <form onSubmit={handleSubmit}>
+        <form className="comment-form" onSubmit={handleSubmit}>
           <label>Event Description:</label>
           <textarea
             value={body}
@@ -162,7 +163,7 @@ const handleDelete = async (id) => {
       ) : (
         <p>Please log in to create an event.</p>
       )}
-    </>
+    </div>
   );
 }
 
