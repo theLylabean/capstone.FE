@@ -66,6 +66,16 @@ const Register = () => {
                                 placeholder='Enter First Name Here'
                             />
                         </div>
+                        <div className='form-field'>
+                            <label>Last Name:&nbsp;</label>
+                            <input
+                                type='text'
+                                name='last_name'
+                                value={createUser.last_name}
+                                onChange={handleChange}
+                                placeholder='Enter Last Name Here'
+                            />
+                        </div>
                     </div>
                 </form>
             </div>
