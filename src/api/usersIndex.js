@@ -31,7 +31,6 @@ const getLogin = async (username, password) => {
 
 const getAccount = async () => {
     const token = localStorage.getItem('token');
-    console.log('Using token to fetch account: ', token)
     try {
     const res = await fetch(`${baseUrl}/account`, {
         method: 'GET',
@@ -41,7 +40,7 @@ const getAccount = async () => {
         }
     });
     if (!res.ok) {
-        throw new Error(`Failed to fetch account details: ${res.status}`)
+        throw new Error(`Failed to fetch account details: ${res.status}`);
     }
     const result = await res.json();
     return result;
