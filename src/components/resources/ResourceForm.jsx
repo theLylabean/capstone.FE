@@ -1,18 +1,20 @@
 import { useState } from "react";
+import { baseUrl } from "../../api/eventsIndex.js";
 
 function ResourceForm(){
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [user_id, setUser_id] = useState("");
     
-    const baseUrl = import.meta.env.VITE_API_URL;
+    // const baseUrl = import.meta.env.VITE_API_URL;
+    const url = baseUrl;
 
     const handleSubmit = async (event) => {
         event.preventDefault()
         setError(null);
 
     try {
-        const res = await fetch(`${baseUrl}/resources`, {
+        const res = await fetch(`${url}/resources`, {
             method: "POST",
             headers: { "Content-Type":  "application/json" },
             body: JSON.stringify({title, body, user_id: Number(user_id)}),

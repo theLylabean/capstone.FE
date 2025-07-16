@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import ResourceForm from "./ResourceForm";
+import ResourceForm from "./ResourceForm.jsx";
+import { baseUrl } from "../../api/eventsIndex.js";
 
 function Resources(){
     const [resources, setResources] = useState();
 
-    const baseUrl = import.meta.env.VITE_API_URL;
+    // const baseUrl = import.meta.env.VITE_API_URL;
+    const url = baseUrl;
 
     useEffect(()=>{
         const getResources = async() => {
             try{
-                const res = await fetch(`${baseUrl}/resources`);
+                const res = await fetch(`${url}/resources`);
                 const data = await res.json();
                 setResources(data);
             } catch(err) {
