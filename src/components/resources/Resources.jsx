@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-<<<<<<< HEAD
 import ResourceForm from "./ResourceForm.jsx";
 import { baseUrl } from "../../api/eventsIndex.js";
-=======
-import { jwtDecode } from "jwt-decode";
-import "../../css/EventsResource.css";
->>>>>>> 8c1e924adb1dfde2112d27f4a9cce06a53a8fb08
 
 function Resources() {
   const [resources, setResources] = useState([]);
@@ -14,7 +9,6 @@ function Resources() {
   const [error, setError] = useState(null);
   const [editingId, setEditingId] = useState(null); // For editing
 
-<<<<<<< HEAD
     // const baseUrl = import.meta.env.VITE_API_URL;
     const url = baseUrl;
 
@@ -29,14 +23,11 @@ function Resources() {
             }
         }
         getResources();
-    }, [])
-=======
+    }, []);
+    
   const token = localStorage.getItem("token");
-  const baseUrl = import.meta.env.VITE_API_URL;
-
   const decoded = token ? jwtDecode(token) : null;
   const user_id = decoded?.id;
->>>>>>> 8c1e924adb1dfde2112d27f4a9cce06a53a8fb08
 
   const getResources = async () => {
     try {
