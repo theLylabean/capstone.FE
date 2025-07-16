@@ -97,9 +97,9 @@ export default function PostDetailsPage({ token }) {
         <ul>
           {post.comments.map((comment) => (
             <li key={comment.id} className="comment-item">
-                <div className="avatar">{comment.username[0].toUpperCase()}</div>
+                <div className="avatar">{comment?.username[0].toUpperCase()}</div>
                 <div className="comment-content">
-              <strong>{comment.username}:</strong> {comment.content}
+              <strong>{comment?.username}:</strong> {comment?.content}
               </div>
             </li>
             
