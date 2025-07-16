@@ -11,8 +11,7 @@ function Events() {
   const [editBody, setEditBody] = useState("");
 
   const token = localStorage.getItem("token");
-  // const baseUrl = import.meta.env.VITE_API_URL;
-    const url = baseUrl;
+  const url = baseUrl;
 
   const decoded = token ? jwtDecode(token) : null;
   const user_id = decoded?.id;
