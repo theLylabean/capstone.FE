@@ -3,6 +3,7 @@ import { getAccount } from "../../api/usersIndex.js";
 
 const Account = ({ currentUser, setCurrentUser }) => {
     useEffect(() => {
+        const token = localStorage.getItem('token');
         if (!token) return;
         const getAccountDetailsAPI = async () => {
             try {
