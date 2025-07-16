@@ -4,7 +4,7 @@ import { getAccount } from "../../api/usersIndex.js";
 const Account = ({ currentUser, setCurrentUser }) => {
     const token = localStorage.getItem('token');
     useEffect(() => {
-        if (!token) return;
+        if (!localStorage.getItem('token')) return;
         const getAccountDetailsAPI = async () => {
             try {
                 const res = await getAccount();
@@ -15,7 +15,7 @@ const Account = ({ currentUser, setCurrentUser }) => {
         };
 
     getAccountDetailsAPI();
-}, [token]);
+}, []);
 
 if (!currentUser) return <p>Loading your account info...</p>
 
