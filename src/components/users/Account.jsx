@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { getAccount } from "../../api/usersIndex.js";
 
 const Account = ({ currentUser, setCurrentUser }) => {
+    const token = localStorage.getItem('token');
     useEffect(() => {
-        const token = localStorage.getItem('token');
         if (!token) return;
         const getAccountDetailsAPI = async () => {
             try {
