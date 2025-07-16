@@ -15,18 +15,22 @@ function Resources() {
   const decoded = token ? jwtDecode(token) : null;
   const user_id = decoded?.id;
 
+  const getResources = async () => {
+    try {
+      const res = await fetch(`${baseUrl}/resources`);
+      const data = await res.json();
+      setResources(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  
+  
   useEffect(() => {
-    const getResources = async () => {
-      try {
-        const res = await fetch(`${baseUrl}/resources`);
-        const data = await res.json();
-        setResources(data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
     getResources();
   }, [baseUrl]);
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -52,6 +56,9 @@ function Resources() {
       }
       setTitle("");
       setBody("");
+
+      await getResources();
+
     } catch (err) {
       console.error(err);
       setError("Submission failed");
@@ -74,7 +81,8 @@ function Resources() {
       });
 
       if (!res.ok) throw new Error("Failed to delete");
-      setResources();
+      await getResources();
+
     } catch (err) {
       console.error(err);
       setError("Delete failed");
