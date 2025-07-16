@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import EventForm from "./EventForm";
+import { baseUrl } from "../../api/eventsIndex.js";
 
 function Events(){
     const [getEvents, setGetEvents] = useState({});
     const { id } = useParams();
 
-    const baseUrl = import.meta.env.VITE_API_URL;
+    // const baseUrl = import.meta.env.VITE_API_URL;
+    const url = baseUrl;
 
     useEffect(()=>{
         const getAllEvents = async() => {
             try{
-                const res = await fetch(`${baseUrl}/events`);
+                const res = await fetch(`${url}/events`);
                 const result = await res.json();
                 console.log('fetched events:', result)
                 setGetEvents(result);
