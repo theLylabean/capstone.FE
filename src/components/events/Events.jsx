@@ -35,7 +35,7 @@ function Events() {
     setError(null);
 
     try {
-      const res = await fetch(`${baseUrl}/events`, {
+      const res = await fetch(`${url}/events`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +63,7 @@ function Events() {
     
     const handleUpdate = async (id) => {
         try {
-            const res = await fetch(`${baseUrl}/events/${id}`, {
+            const res = await fetch(`${url}/events/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -90,7 +90,7 @@ function Events() {
 
 const handleDelete = async (id) => {
   try {
-    const res = await fetch(`${baseUrl}/events/${id}`, {
+    const res = await fetch(`${url}/events/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
