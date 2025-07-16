@@ -9,21 +9,8 @@ function Resources() {
   const [error, setError] = useState(null);
   const [editingId, setEditingId] = useState(null); // For editing
 
-    // const baseUrl = import.meta.env.VITE_API_URL;
-    const url = baseUrl;
-
-    useEffect(()=>{
-        const getResources = async() => {
-            try{
-                const res = await fetch(`${url}/resources`);
-                const data = await res.json();
-                setResources(data);
-            } catch(err) {
-                console.error(err);
-            }
-        }
-        getResources();
-    }, []);
+  // const baseUrl = import.meta.env.VITE_API_URL;
+  const url = baseUrl;
     
   const token = localStorage.getItem("token");
   const decoded = token ? jwtDecode(token) : null;
@@ -39,12 +26,9 @@ function Resources() {
     }
   };
   
-  
   useEffect(() => {
     getResources();
-  }, [baseUrl]);
-
-
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
