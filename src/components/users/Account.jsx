@@ -16,8 +16,19 @@ const Account = ({ currentUser }) => {
 //     getAccountDetailsAPI();
 // }, [token]);
 
+const Account = ({ user, setUser }) => {
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const getAccountDetailsAPI = async () => {
+            const res = await getAccount({token});
+            setUser(res);
+        }
+        getAccountDetailsAPI();
+    }, []);
+
 if (!currentUser) return <p>Loading your account info...</p>
-    
+
     return (
         <>
             <div className='account-page-container'>
