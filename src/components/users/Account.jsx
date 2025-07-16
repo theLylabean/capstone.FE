@@ -11,9 +11,9 @@ if (!currentUser) return <p>Loading your account info...</p>
                     Welcome to your Account Page, {currentUser?.firstName}!
                 </h1>
                 <div className='personal-info'>
-                    <p><u>Name:</u>&nbsp;{currentUser?.firstName}&nbsp;{currentUser?.lastName}</p>
-                    <p><u>Email:</u>&nbsp;{currentUser?.email}</p>
-                    <p><u>Username:</u>&nbsp;{currentUser?.username}</p>
+                    <p><u>Name</u>:&nbsp;{currentUser?.firstName}&nbsp;{currentUser?.lastName}</p>
+                    <p><u>Email</u>:&nbsp;{currentUser?.email}</p>
+                    <p><u>Username</u>:&nbsp;{currentUser?.username}</p>
                 </div>
             </div>
         </>
