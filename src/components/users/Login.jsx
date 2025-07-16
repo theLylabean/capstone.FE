@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLogin } from '../../api/usersIndex';
 
-const Login = ({ setUser, setToken }) => {
+const Login = ({ setCurrentUser, setToken }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loginError, setLoginError] = useState(null);
@@ -16,7 +16,7 @@ const Login = ({ setUser, setToken }) => {
             if (res.token) {
                 localStorage.setItem('token', res.token);
                 setToken(res.token);
-                setUser(res.user);
+                setCurrentUser(res.user);
                 navigate('/account');
             } else {
                 setLoginError(response.message || '** Invalid username or password **')
