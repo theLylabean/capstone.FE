@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import "../../css/EventsResource.css";
+import { baseUrl } from "../../api/eventsIndex.js";
 
 function Events() {
   const [events, setEvents] = useState([]);
@@ -10,7 +11,7 @@ function Events() {
   const [editBody, setEditBody] = useState("");
 
   const token = localStorage.getItem("token");
-  const baseUrl = import.meta.env.VITE_API_URL;
+  const url = baseUrl;
 
   const decoded = token ? jwtDecode(token) : null;
   const user_id = decoded?.id;
@@ -19,7 +20,7 @@ function Events() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await fetch(`${baseUrl}/events`);
+        const res = await fetch(`${url}/events`);
         const data = await res.json();
         setEvents(data);
       } catch (err) {

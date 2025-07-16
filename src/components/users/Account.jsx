@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { getAccount } from "../../api/usersIndex.js";
 
-const Account = ({ currentUser }) => {
+const Account = ({ currentUser, setCurrentUser }) => {
     useEffect(() => {
         if (!token) return;
         const getAccountDetailsAPI = async () => {
@@ -15,7 +15,6 @@ const Account = ({ currentUser }) => {
 
     getAccountDetailsAPI();
 }, [token]);
-
 
 if (!currentUser) return <p>Loading your account info...</p>
 
