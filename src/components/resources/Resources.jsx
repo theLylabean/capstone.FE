@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import ResourceForm from "./ResourceForm.jsx";
 import { baseUrl } from "../../api/eventsIndex.js";
 import { jwtDecode } from "jwt-decode";
 
