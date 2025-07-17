@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import AddPost from "./Addpost";
 import { Link } from "react-router-dom";
-import "./AllpostsPage.css"
+import "./AllpostsPage.css";
 
 export default function AllPostsPage({ token }) {
   const [posts, setPosts] = useState([]);
@@ -40,17 +41,19 @@ export default function AllPostsPage({ token }) {
 
   const handleAddComment = async (e, postId) => {
     e.preventDefault();
-    setPostError(null);
 
-    //will trim the input and check if it's empty
-
-    const trimmedComment = newComment.trim();
-    if (!trimmedComment) {
-      setPostError("Comment cannot be empty.");
+    const commentForPost = newComment[postId]?.trim();
+    if (!commentForPost) {
+      setPostError((prev) => ({
+        ...prev,
+        [postId]: "Comment cannot be empty.",
+      }));
       return;
     }
 
-    setPosting(true);
+    setPosting((prev) => ({ ...prev, [postId]: true }));
+    setPostError((prev) => ({ ...prev, [postId]: "" }));
+
     try {
       const response = await fetch(
         `http://localhost:3000/api/posts/${postId}/comments`,
@@ -60,29 +63,36 @@ export default function AllPostsPage({ token }) {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ content: trimmedComment[postId] }),
+          body: JSON.stringify({ content: commentForPost }),
         }
       );
+
       if (!response.ok) {
         throw new Error("Failed to post comment.");
       }
 
-      const addedComment = await response.json();
+      // ✅ Fetch updated comments for just this post
+      const updatedCommentsRes = await fetch(
+        `http://localhost:3000/api/posts/${postId}/comments`
+      );
+      const updatedComments = await updatedCommentsRes.json();
 
+      // ✅ Update only the comments array for this post
       setPosts((prevPosts) =>
         prevPosts.map((post) =>
-          post.id === postId
-            ? { ...post, comments: [...post.comments, addedComment] }
-            : post
+          post.id === postId ? { ...post, comments: updatedComments } : post
         )
       );
-      //setNewComment("");
+
       setNewComment((prev) => ({ ...prev, [postId]: "" }));
     } catch (err) {
       console.error(err);
-      setPostError("Error posting comment.");
+      setPostError((prev) => ({
+        ...prev,
+        [postId]: "Error posting comment.",
+      }));
     } finally {
-      setPosting(false);
+      setPosting((prev) => ({ ...prev, [postId]: false }));
     }
   };
 
@@ -92,6 +102,12 @@ export default function AllPostsPage({ token }) {
   return (
     <div className="all-posts-page">
       <h1>All Posts</h1>
+      {token && (
+        <AddPost
+          token={token}
+          onPostAdded={(newPost) => setPosts([newPost, ...posts])}
+        />
+      )}
       <div className="posts-list">
         {posts.map((post) => (
           <div className="post-card" key={post.id}>
@@ -115,7 +131,7 @@ export default function AllPostsPage({ token }) {
                   {post.comments.map((comment) => (
                     <li key={comment.id} className="comment-item">
                       <div className="avatar">
-                        {comment.username[0].toUpperCase()}
+                        {comment.username[0]?.toUpperCase()}
                       </div>
                       <div className="comment-content">
                         <strong>{comment.username}</strong>
@@ -135,18 +151,20 @@ export default function AllPostsPage({ token }) {
                 <textarea
                   value={newComment[post.id] || ""}
                   onChange={(e) =>
-                    setNewComment({
-                      ...newComment,
+                    setNewComment((prev) => ({
+                      ...prev,
                       [post.id]: e.target.value,
-                    })
+                    }))
                   }
                   placeholder="Add your comment..."
                   required
                 />
-                <button type="submit" disabled={posting}>
-                  {posting ? "Posting..." : "Add Comment"}
+                <button type="submit" disabled={posting[post.id]}>
+                  {posting[post.id] ? "Posting..." : "Add Comment"}
                 </button>
-                {postError && <p className="error-message">{postError}</p>}
+                {postError[post.id] && (
+                  <p className="error-message">{postError[post.id]}</p>
+                )}
               </form>
             ) : (
               <p className="login-prompt">Please log in to add a comment.</p>
