@@ -97,40 +97,6 @@ export default function PostDetailsPage({ token }) {
       <p>{post.content}</p>
       <h3>Comments</h3>
       <div className="comments-section">
-<<<<<<< HEAD
-      {post.comments.length === 0 ? (
-        <p>No comments yet.</p>
-      ) : (
-        <ul>
-          {post.comments.map((comment) => (
-            <li key={comment.id} className="comment-item">
-                <div className="avatar">{comment?.username[0].toUpperCase()}</div>
-                <div className="comment-content">
-              <strong>{comment?.username}:</strong> {comment?.content}
-              </div>
-            </li>
-            
-          ))}
-        </ul>
-      )}
-      {token ? (
-        <form className="comment-form" onSubmit={handleAddComment}>
-          <textarea
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            placeholder="Add your comment..."
-            required
-          />
-          <button type="submit" disabled={posting}>
-            {posting ? "Posting..." : "Add Comment"}
-          </button>
-          {postError && <p style={{ color: "red" }}>{postError}</p>}
-        </form>
-      ) : (
-        <p>Please log in to add a comment.</p>
-      )}
-    </div>
-=======
         {post.comments.length === 0 ? (
           <p>No comments yet.</p>
         ) : (
@@ -164,7 +130,6 @@ export default function PostDetailsPage({ token }) {
           <p>Please log in to add a comment.</p>
         )}
       </div>
->>>>>>> 09e05fff6b033b37360260e6a5d41dc2fa42989a
     </div>
   );
 }
