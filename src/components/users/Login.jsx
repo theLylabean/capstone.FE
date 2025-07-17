@@ -19,7 +19,7 @@ const Login = ({ setCurrentUser, setToken }) => {
                 setCurrentUser(res.user);
                 navigate('/account');
             } else {
-                setLoginError(res.message || '** Invalid username or password **')
+                setLoginError(response.message || '** Invalid username or password **')
             }
         } catch (error) {
             console.error('Login error: ', error.message);
