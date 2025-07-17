@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./PostDetailsPage.css"
+import "./PostDetailsPage.css";
 export default function PostDetailsPage({ token }) {
   const { id } = useParams();
   const [post, setPost] = useState(null);
@@ -40,10 +40,16 @@ export default function PostDetailsPage({ token }) {
 
   const handleAddComment = async (e) => {
     e.preventDefault();
-    setPosting(true);
     setPostError(null);
 
+    const trimmedComment = newComment.trim();
+      if (!trimmedComment) {
+        setPostError("Comment cannot be empty.");
+        return;
+      }
+    setPosting(true);
     try {
+      
       const response = await fetch(
         `http://localhost:3000/api/posts/${id}/comments`,
         {
@@ -52,7 +58,7 @@ export default function PostDetailsPage({ token }) {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ content: newComment }),
+          body: JSON.stringify({ content: trimmedComment }),
         }
       );
 
@@ -91,38 +97,39 @@ export default function PostDetailsPage({ token }) {
       <p>{post.content}</p>
       <h3>Comments</h3>
       <div className="comments-section">
-      {post.comments.length === 0 ? (
-        <p>No comments yet.</p>
-      ) : (
-        <ul>
-          {post.comments.map((comment) => (
-            <li key={comment.id} className="comment-item">
-                <div className="avatar">{comment?.username[0].toUpperCase()}</div>
+        {post.comments.length === 0 ? (
+          <p>No comments yet.</p>
+        ) : (
+          <ul>
+            {post.comments.map((comment) => (
+              <li key={comment.id} className="comment-item">
+                <div className="avatar">
+                  {comment.username[0].toUpperCase()}
+                </div>
                 <div className="comment-content">
-              <strong>{comment?.username}:</strong> {comment?.content}
-              </div>
-            </li>
-            
-          ))}
-        </ul>
-      )}
-      {token ? (
-        <form className="comment-form" onSubmit={handleAddComment}>
-          <textarea
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            placeholder="Add your comment..."
-            required
-          />
-          <button type="submit" disabled={posting}>
-            {posting ? "Posting..." : "Add Comment"}
-          </button>
-          {postError && <p style={{ color: "red" }}>{postError}</p>}
-        </form>
-      ) : (
-        <p>Please log in to add a comment.</p>
-      )}
-    </div>
+                  <strong>{comment.username}:</strong> {comment.content}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+        {token ? (
+          <form className="comment-form" onSubmit={handleAddComment}>
+            <textarea
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              placeholder="Add your comment..."
+              required
+            />
+            <button type="submit" disabled={posting}>
+              {posting ? "Posting..." : "Add Comment"}
+            </button>
+            {postError && <p style={{ color: "red" }}>{postError}</p>}
+          </form>
+        ) : (
+          <p>Please log in to add a comment.</p>
+        )}
+      </div>
     </div>
   );
 }

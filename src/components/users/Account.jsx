@@ -1,21 +1,21 @@
 import { useEffect } from "react";
 import { getAccount } from "../../api/usersIndex.js";
 
-const Account = ({ currentUser }) => {
-//     const token = localStorage.getItem('token');
-//     useEffect(() => {
-//         if (!token) return;
-//         const getAccountDetailsAPI = async () => {
-//             try {
-//                 const res = await getAccount();
-//                 setCurrentUser(res)
-//             } catch (error) {
-//                 console.error('getAccount failed: ', error.message);
-//             }
-//         };
+const Account = ({ currentUser, setCurrentUser }) => {
+    const token = localStorage.getItem('token');
+    useEffect(() => {
+        if (!localStorage.getItem('token')) return;
+        const getAccountDetailsAPI = async () => {
+            try {
+                const res = await getAccount();
+                setCurrentUser(res)
+            } catch (error) {
+                console.error('getAccount failed: ', error.message);
+            }
+        };
 
-//     getAccountDetailsAPI();
-// }, [token]);
+    getAccountDetailsAPI();
+}, []);
 
 if (!currentUser) return <p>Loading your account info...</p>
 
