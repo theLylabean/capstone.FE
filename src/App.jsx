@@ -56,7 +56,7 @@ function App() {
       />
       <main className="app-content">
         <Routes>
-          <Route path="/" element={<AllPostsPage />} />
+  {       /*  <Route path="/" element={<AllPostsPage />} /> */}
           <Route path="/" element={<AllPostsPage token={token} />} />
           <Route 
             path="/register" 
