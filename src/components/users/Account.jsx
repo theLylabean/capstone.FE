@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { getAccount } from "../../api/usersIndex.js";
+import '../../css/Account.css';
 
 const Account = ({ currentUser, setCurrentUser }) => {
     const token = localStorage.getItem('token');
@@ -25,10 +26,10 @@ if (!currentUser) return <p>Loading your account info...</p>
                 <h1>
                     Welcome to your Account Page, {currentUser?.firstName}!
                 </h1>
-                <div className='personal-info'>
-                    <p><u>Name:</u>&nbsp;{currentUser?.firstName}&nbsp;{currentUser?.lastName}</p>
-                    <p><u>Email:</u>&nbsp;{currentUser?.email}</p>
-                    <p><u>Username:</u>&nbsp;{currentUser?.username}</p>
+                <div className='personal-info-container'>
+                    <p className='personal-info-card'><u>Name</u>:&nbsp;{currentUser?.firstName}&nbsp;{currentUser?.lastName}</p>
+                    <p className='personal-info-card'><u>Email</u>:&nbsp;{currentUser?.email}</p>
+                    <p className='personal-info-card'><u>Username</u>:&nbsp;{currentUser?.username}</p>
                 </div>
             </div>
         </>
