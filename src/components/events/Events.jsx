@@ -17,18 +17,20 @@ function Events() {
   const user_id = decoded?.id;
   const username = decoded?.username;
 
-  useEffect(() => {
-    const fetchEvents = async () => {
+  const fetchEvents = async () => {
       try {
-        const res = await fetch(`${url}/events`);
-        const data = await res.json();
-        setEvents(data);
-      } catch (err) {
-        console.error("Error fetching events:", err);
-      }
+          const res = await fetch(`${url}/events`);
+          const data = await res.json();
+          setEvents(data);
+        } catch (err) {
+            console.error("Error fetching events:", err);
+            setEvents([])
+        }
     };
-    fetchEvents();
-  }, [baseUrl]);
+
+    useEffect(() => {
+        fetchEvents();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,9 +47,8 @@ function Events() {
       });
 
       if (res.ok) {
-        const data = await res.json();
-        setEvents();
         setBody("");
+        fetchEvents();
       }
     } catch (err) {
       console.error(err);
@@ -69,7 +70,7 @@ function Events() {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify({ body: editBody }),
+                body: JSON.stringify({ body: editBody, user_id: Number(user_id), username: username, }),
             });
             
             if (res.ok) {
@@ -113,7 +114,7 @@ const handleDelete = async (id) => {
       <h1>Events</h1>
 
       <div className="posts-list">
-        {events.length > 0 ? (
+        {events && events.length > 0 ? (
           events.map((event) => (
             <div className="post-card" key={event.id} style={{ marginBottom: "1rem" }}>
               <h2>{event.username}</h2>
