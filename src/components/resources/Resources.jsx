@@ -52,8 +52,10 @@ function Resources() {
         setResources();
         setEditingId(null);
       }
+
       setTitle("");
       setBody("");
+      setEditingId(null);
 
       await getResources();
 
@@ -92,7 +94,7 @@ function Resources() {
       <h1>Resources</h1>
 
       <div className="posts-list">
-        {resources.length > 0 ? (
+        {resources && resources.length > 0 ? (
           resources.map((resource) => (
             <div className="post-card" key={resource.id}>
               <h2>{resource.title}</h2>
