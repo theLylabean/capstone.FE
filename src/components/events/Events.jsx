@@ -130,7 +130,7 @@ const handleDelete = async (id) => {
                 </>
               ) : (
                 <>
-                  <p>{event.body}</p>
+                  <h3>{event.body}</h3>
                   <h4>{new Date(event.created_at).toLocaleDateString()}</h4>
                   {event.user_id === user_id && (
                     <div>
