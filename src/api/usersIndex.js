@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:3000/auth';
 
-const createUser = async (first_name, last_name, email, username, password) => {
+const createUser = async ({first_name, last_name, email, username, password}) => {
     try {
         const res = await fetch(`${baseUrl}/register`, {
             method: 'POST',
@@ -29,9 +29,10 @@ const getLogin = async (username, password) => {
     }
 }
 
-const getAccount = async ({ token }) => {
+const getAccount = async () => {
+    const token = localStorage.getItem('token');
     try {
-    const res = await fetch(`${baseUrl}/users/account`, {
+    const res = await fetch(`${baseUrl}/account`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -39,7 +40,7 @@ const getAccount = async ({ token }) => {
         }
     });
     if (!res.ok) {
-        throw new Error(`Failed to fetch account details: ${res.status}`)
+        throw new Error(`Failed to fetch account details: ${res.status}`);
     }
     const result = await res.json();
     return result;
