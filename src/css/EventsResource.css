@@ -111,6 +111,7 @@
   
   /* Comment form styling */
   .comment-form {
+    width: 32rem;
     margin-top: 20px;
     background: #fafafa;
     padding: 20px;
@@ -119,7 +120,8 @@
   }
   
   .comment-form textarea {
-    width: 100%;
+    width: 90%;
+    max-width: 100%;
     min-height: 80px;
     padding: 12px;
     font-size: 1rem;
@@ -182,7 +184,8 @@ button{
  }
 
  input{
-       width: 100%;
+        width: 90%;
+        max-width: 100%;
         padding: 12px;
         font-size: 1rem;
         border-radius: 8px;
