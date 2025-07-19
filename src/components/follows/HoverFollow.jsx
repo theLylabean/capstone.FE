@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getFollowStatus, followUser, unfollowUser } from "../../api/followsIndex.js";
+import '../../css/HoverFollow.css';
 
 const HoverFollow = ({ targetUserId, children }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -47,10 +48,15 @@ const HoverFollow = ({ targetUserId, children }) => {
 
     return (
         <>
-            <div onMouseEnter={handleMouseEnter} onMouseLeave={() => setIsHovered(false)}>
+            <div 
+                className='hover-follow-container' 
+                onMouseEnter={handleMouseEnter} 
+                onMouseLeave={() => setIsHovered(false)}
+            >
                 {children}
                 {isHovered && isFollowing !== null && (
                     <button 
+                    className='follow-button'
                     onClick={isFollowing ? handleUnfollow : handleFollow}
                     disabled={isLoading}
                     >

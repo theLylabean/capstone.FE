@@ -129,8 +129,9 @@ console.log('All posts:', posts);
             </p>
             {currentUser?.id !== post.user_id && (
               <HoverFollow targetUserId={post.user_id}>
-                <p className='follow-user'>
-                  <strong>By:</strong> {post.username}
+                <p>
+                  <strong>By:</strong>{" "}
+                  <span className="follow-user">{post.username}</span>
                 </p>
               </HoverFollow>
             )}
