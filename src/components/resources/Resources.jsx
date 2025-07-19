@@ -152,6 +152,8 @@ function Resources() {
                 onChange={(e) => setTitle(e.target.value)}
                 required
               />
+              <br />
+              <br />
               <label>Body:</label>
               <textarea
                 value={body}
