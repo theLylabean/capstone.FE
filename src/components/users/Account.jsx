@@ -32,6 +32,12 @@ if (!currentUser) return <p>Loading your account info...</p>
                     <p className='personal-info-card'><u>Username</u>:&nbsp;{currentUser?.username}</p>
                 </div>
             </div>
+            <br />
+            <div className='follow-container'>
+                <div className='follow-list'>
+                    
+                </div>
+            </div>
         </>
     )
 }

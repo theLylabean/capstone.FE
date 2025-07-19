@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import AddPost from "./Addpost";
 import { Link } from "react-router-dom";
+import HoverFollow from '../components/follows/HoverFollow.jsx';
 import "./AllpostsPage.css";
 
-export default function AllPostsPage({ token }) {
+export default function AllPostsPage({ currentUser, token }) {
   const [posts, setPosts] = useState([]);
   const [newComment, setNewComment] = useState({});
   const [posting, setPosting] = useState({});
@@ -20,6 +21,7 @@ export default function AllPostsPage({ token }) {
         return response.json();
       })
       .then(async (postsData) => {
+        console.log("🚨 postsData:", postsData);
         const postsWithComments = await Promise.all(
           postsData.map(async (post) => {
             const commentsRes = await fetch(
@@ -79,10 +81,13 @@ export default function AllPostsPage({ token }) {
 
       // ✅ Update only the comments array for this post
       setPosts((prevPosts) =>
-        prevPosts.map((post) =>
-          post.id === postId ? { ...post, comments: updatedComments } : post
-        )
+        prevPosts.map((post) => {
+          return post.id === postId ? { ...post, comments: updatedComments } : post;
+        })
       );
+      
+      // If you want to log the updated post, do it here:
+      console.log('POST:', prevPosts.find(post => post.id === postId));
 
       setNewComment((prev) => ({ ...prev, [postId]: "" }));
     } catch (err) {
@@ -98,6 +103,11 @@ export default function AllPostsPage({ token }) {
 
   if (loading) return <div>Loading posts....</div>;
   if (error) return <div>Error: {error.message}</div>;
+
+  console.log('currentUser:', currentUser);
+console.log('post.userId:', posts.user_id);
+console.log('post.username:', posts.username);
+console.log('All posts:', posts);
 
   return (
     <div className="all-posts-page">
@@ -117,9 +127,13 @@ export default function AllPostsPage({ token }) {
             <p>
               <strong>Community:</strong> {post.community}
             </p>
-            <p>
-              <strong>By:</strong> {post.username}
-            </p>
+            {currentUser?.id !== post.user_id && (
+              <HoverFollow targetUserId={post.user_id}>
+                <p className='follow-user'>
+                  <strong>By:</strong> {post.username}
+                </p>
+              </HoverFollow>
+            )}
             <p>{post.content}</p>
 
             <div className="comments-section">
