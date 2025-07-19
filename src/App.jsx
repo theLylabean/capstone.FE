@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 import Register from "./components/users/Register.jsx";
 import Login from "./components/users/Login.jsx";
 import Account from "./components/users/Account.jsx";
+import About from "./components/UI/About.jsx";
 // import Home from './components/UI/Home.jsx';
 import Navbar from "./components/UI/NavBar.jsx";
 //import Footer from "./components/UI/Footer.jsx";
@@ -56,7 +57,7 @@ function App() {
       />
       <main className="app-content">
         <Routes>
-          <Route path="/" element={<AllPostsPage />} />
+  {       /*  <Route path="/" element={<AllPostsPage />} /> */}
           <Route path="/" element={<AllPostsPage token={token} />} />
           <Route 
             path="/register" 
@@ -76,6 +77,7 @@ function App() {
               />
             }
           />
+          <Route path="/about" element={<About />} />
           <Route
             path="/account"
             element={

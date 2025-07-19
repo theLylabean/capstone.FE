@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
+import { baseUrl } from "../../api/eventsIndex.js";
 import { jwtDecode } from "jwt-decode";
-import "../../css/EventsResource.css";
 
 function Resources() {
   const [resources, setResources] = useState([]);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [error, setError] = useState(null);
-  const [editingId, setEditingId] = useState(null); // For editing
+  const [editId, setEditId] = useState(null); // For editing
 
   const token = localStorage.getItem("token");
-  const baseUrl = import.meta.env.VITE_API_URL;
-
+  // const baseUrl = import.meta.env.VITE_API_URL;
+  const url = baseUrl;
+    
   const decoded = token ? jwtDecode(token) : null;
   const user_id = decoded?.id;
 
@@ -25,17 +26,19 @@ function Resources() {
     }
   };
   
-  
   useEffect(() => {
     getResources();
-  }, [baseUrl]);
-
-
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-
+  
+    if (editId) {
+      handleUpdate(editId);
+      return;
+    }
+  
     try {
       const res = await fetch(`${baseUrl}/resources`, {
         method: "POST",
@@ -45,20 +48,14 @@ function Resources() {
         },
         body: JSON.stringify({ title, body, user_id: Number(user_id) }),
       });
-
+  
       if (!res.ok) throw new Error("Failed to submit");
-
-      const data = await res.json();
-
-      if (editingId) {
-        setResources();
-        setEditingId(null);
-      }
+      
+      const newResource = await res.json();
+      setResources((prev) => [newResource, ...prev]);
       setTitle("");
       setBody("");
-
-      await getResources();
-
+  
     } catch (err) {
       console.error(err);
       setError("Submission failed");
@@ -66,9 +63,37 @@ function Resources() {
   };
 
   const handleEdit = (resource) => {
-    setEditingId(resource.id);
+    setEditId(resource.id);
     setTitle(resource.title);
     setBody(resource.body);
+  };
+  
+  const handleUpdate = async (id) => {
+    try {
+      const res = await fetch(`${baseUrl}/resources/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({title, body, user_id:Number(user_id)}),
+      });
+
+      if (res.ok) {
+        const updated = await res.json();
+        setResources((prev) => 
+            prev.map((resource) => (resource.id === id ? updated : resource))
+      );
+        setEditId(null);
+        setTitle("");
+        setBody("");
+      } else {
+        setError("Failed to update resource");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("An error occurred while updating the event.")
+    }
   };
 
   const handleDelete = async (id) => {
@@ -94,7 +119,7 @@ function Resources() {
       <h1>Resources</h1>
 
       <div className="posts-list">
-        {resources.length > 0 ? (
+        {resources && resources.length > 0 ? (
           resources.map((resource) => (
             <div className="post-card" key={resource.id}>
               <h2>{resource.title}</h2>
@@ -127,6 +152,8 @@ function Resources() {
                 onChange={(e) => setTitle(e.target.value)}
                 required
               />
+              <br />
+              <br />
               <label>Body:</label>
               <textarea
                 value={body}
@@ -134,13 +161,13 @@ function Resources() {
                 required
               />
               <button type="submit">
-                {editingId ? "Update Resource" : "Create Resource"}
+                {editId ? "Update Resource" : "Create Resource"}
               </button>
-              {editingId && (
+              {editId && (
                 <button
                   type="button"
                   onClick={() => {
-                    setEditingId(null);
+                    setEditId(null);
                     setTitle("");
                     setBody("");
                   }}

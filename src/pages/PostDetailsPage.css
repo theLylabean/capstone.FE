@@ -137,6 +137,7 @@
   
   /* COMMENT FORM */
   .comment-form {
+    width: 35rem;
     margin-top: 30px;
     background: var(--comment-bg);
     padding: 20px;
@@ -145,7 +146,8 @@
   }
   
   .comment-form textarea {
-    width: 100%;
+    width: 90%;
+    max-width: 100%;
     min-height: 100px;
     padding: 12px;
     font-size: 1rem;

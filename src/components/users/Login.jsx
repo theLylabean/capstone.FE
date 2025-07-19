@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLogin } from '../../api/usersIndex';
+import "../../css/Login.css";
 
 const Login = ({ setCurrentUser, setToken }) => {
     const [username, setUsername] = useState('');
@@ -19,7 +20,7 @@ const Login = ({ setCurrentUser, setToken }) => {
                 setCurrentUser(res.user);
                 navigate('/account');
             } else {
-                setLoginError(response.message || '** Invalid username or password **')
+                setLoginError(res.message || '** Invalid username or password **')
             }
         } catch (error) {
             console.error('Login error: ', error.message);
