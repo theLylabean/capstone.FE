@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { getAccount } from "../../api/usersIndex.js";
+import Follows from "../follows/Follows.jsx";
 import '../../css/Account.css';
 
 const Account = ({ currentUser, setCurrentUser }) => {
@@ -33,10 +34,8 @@ if (!currentUser) return <p>Loading your account info...</p>
                 </div>
             </div>
             <br />
-            <div className='follow-container'>
-                <div className='follow-list'>
-                    
-                </div>
+            <div>
+                <Follows />
             </div>
         </>
     )

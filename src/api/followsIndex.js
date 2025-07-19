@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:3000/api';
 
-const getFollowing = async () => {
+const getFollowing = async (id) => {
     const token = localStorage.getItem('token');
     try {
         const res = await fetch(`${baseUrl}/follows/${id}/following`, {
@@ -11,7 +11,7 @@ const getFollowing = async () => {
             }
         });
         if (!res.ok) {
-            throw newError (`Failed to fetch following list: ${res.status}`)
+            throw new Error (`Failed to fetch following list: ${res.status}`)
         }
         const result = await res.json();
         return result;
@@ -21,7 +21,7 @@ const getFollowing = async () => {
     }
 }
 
-const getFollowers = async () => {
+const getFollowers = async (id) => {
     const token = localStorage.getItem('token');
     try {
         const res = await fetch(`${baseUrl}/follows/${id}/followers`, {
@@ -32,7 +32,7 @@ const getFollowers = async () => {
             }
         });
         if (!res.ok) {
-            throw newError (`Failed to fetch following lists: ${res.status}`)
+            throw new Error (`Failed to fetch following lists: ${res.status}`)
         }
         const result = await res.json();
         return result;
