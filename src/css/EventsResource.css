@@ -1,76 +1,78 @@
-.all-posts-page {
+/* .all-posts-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 40px 20px;
-    background: var(--bg);
+    /* background: var(--bg);
     color: var(--text);
     min-height: 100vh;
-  }
+    background-color: #fdfaf6;
+    color: #1b2b49;
+  } 
   
   /* Heading styling */
-  .all-posts-page h1 {
+  /* .all-posts-page h1 {
     text-align: center;
     font-size: 2.2rem;
-    color: var(--accent);
+    /* color: var(--accent);
     margin-bottom: 30px;
     border-bottom: 2px solid var(--accent);
     padding-bottom: 10px;
-  }
+  } */
   
   /* Feed container with vertical spacing */
-  .posts-list {
+  /* .posts-list {
     display: flex;
     flex-direction: column;
-    gap: 32px;  /* SPACE BETWEEN POSTS */
-    width: 100%;
+    gap: 32px;  SPACE BETWEEN POSTS */
+    /* width: 100%;
     max-width: 700px;
   }
   
   /* Each post is a CARD */
-  .post-card {
-    background: var(--comment-bg);
+  /* .post-card {
+    /* background: var(--comment-bg);
     border: 1px solid var(--accent);
     border-radius: 16px;
     padding: 24px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     transition: background 0.3s, transform 0.2s;
-  }
+  } */
   
   /* On hover, lift slightly */
-  .post-card:hover {
+  /* .post-card:hover {
     background: var(--comment-hover);
     transform: translateY(-2px);
-  }
+  } */
   
   /* Post title link styling */
-  .post-card h2 {
+  /* .post-card h2 {
     margin-top: 0;
     color: var(--accent);
     margin-bottom: 12px;
-  }
+  } */
   
-  .post-card a {
+  /* .post-card a {
     text-decoration: none;
     color: var(--accent);
-  }
+  } */
   
   /* Post meta info */
-  .post-card p {
+  /* .post-card p {
     margin: 8px 0;
     line-height: 1.5;
     color: var(--text);
-  }
+  } */
   
   /* Comments section separator */
-  .comments-section {
+  /* .comments-section {
     margin-top: 20px;
     padding-top: 15px;
     border-top: 2px solid #ececec;
-  }
+  } */
   
   /* Comment item with avatar */
-  .comment-item {
+  /* .comment-item {
     display: flex;
     align-items: flex-start;
     background: var(--comment-bg);
@@ -79,13 +81,13 @@
     margin-bottom: 12px;
     border-radius: 8px;
     transition: background 0.2s;
-  }
+  } */
   
-  .comment-item:hover {
+  /* .comment-item:hover {
     background: var(--comment-hover);
-  }
+  } */
   
-  .avatar {
+  /* .avatar {
     width: 40px;
     height: 40px;
     background-color: var(--accent);
@@ -97,9 +99,9 @@
     align-items: center;
     justify-content: center;
     margin-right: 12px;
-  }
+  } */
   
-  .comment-content {
+  /* .comment-content {
     flex: 1;
   }
   
@@ -107,7 +109,7 @@
     display: block;
     color: var(--accent);
     margin-bottom: 4px;
-  }
+  } */
   
   /* Comment form styling */
   .comment-form {
@@ -147,7 +149,7 @@
     cursor: pointer;
     transition: background 0.3s;
   }
-  
+  /*
   .comment-form button:hover {
     opacity: 0.9;
   }
@@ -167,7 +169,13 @@
     margin-top: 10px;
     font-style: italic;
     color: var(--accent);
+}  */
 
+.all-posts-page {
+  background-color: #fdfaf6;
+  color: #1b2b49;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 0;
 }
 
 button{
@@ -177,11 +185,37 @@ button{
     font-size: 1rem;
     border: none;
     border-radius: 6px;
-    background: var(--button-bg);
-    color: white;
+    background: #a7c7e7;
+    color: #1b2b49;
     cursor: pointer;
     transition: background 0.3s;
  }
+
+input, 
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 80px;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  height: 4px;
+  width: 750px;
+  margin: 10px auto 0;
+  background: linear-gradient(to right, #f28c8c, #f6e27f, #b5d8a9, #a7c7e7);
+  border-radius: 2px;
+}
 
  input{
         width: 90%;

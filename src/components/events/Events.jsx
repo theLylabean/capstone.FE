@@ -110,7 +110,7 @@ const handleDelete = async (id) => {
 
   return (
     <div className="all-posts-page">
-      <h1>Events</h1>
+      <h1 className="">Events</h1>
 
       <div className="posts-list">
         {events && events.length > 0 ? (
