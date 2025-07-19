@@ -1,8 +1,8 @@
 /* THEME VARIABLES */
 :root {
-    --bg: #ffffff;
-    --text: #333;
-    --accent: #5a2ea6;
+    --bg: #fdfaf6;
+    --text: #1b2b49;
+    --accent: #1b2b49;
     --accent-light: #7f4cc0;
     --comment-bg: #f7f3ff;
     --comment-hover: #efe6ff;
@@ -168,8 +168,8 @@
     font-size: 1rem;
     border: none;
     border-radius: 6px;
-    background: var(--button-bg);
-    color: white;
+    background: #a7c7e7;
+    color: #1b2b49;
     cursor: pointer;
     transition: opacity 0.3s;
   }
@@ -344,8 +344,6 @@
     font-size: 1rem;
     border: none;
     border-radius: 6px;
-    background: var(--button-bg);
-    color: white;
     cursor: pointer;
     transition: opacity 0.3s;
   }

@@ -1,0 +1,77 @@
+.login-container {
+  max-width: 420px;
+  margin: 250px auto;
+  padding: 32px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  font-family: Arial, sans-serif;
+}
+
+.login-header-container {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-header-container h2 {
+  font-size: 2rem;
+  color: #007bff;
+  margin: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-username,
+.login-password {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-username label,
+.login-password label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.form-username,
+.form-password {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s;
+  background: white;
+}
+
+.form-username:focus,
+.form-password:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.submit-button {
+  margin-top: 12px;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-button:hover {
+  background: #0056b3;
+}
+
+p {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}

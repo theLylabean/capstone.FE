@@ -1,17 +1,30 @@
+.main-content {
+margin-top: 70px;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 24px;
-    background-color: var(--bg);
-    color: var(--text);
+    background-color: #1b2b49;
+    color: #fdfaf6;
     border-bottom: 2px solid var(--accent);
+<<<<<<< Updated upstream
+=======
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 1.5rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+>>>>>>> Stashed changes
   }
   
   .navbar-left a {
     margin-right: 16px;
     text-decoration: none;
-    color: var(--accent);
+    color: #fdfaf6;
     font-weight: bold;
     transition: color 0.3s;
   }
@@ -21,14 +34,15 @@
   }
   
   .theme-toggle {
-    background: var(--button-bg);
+    background: #f28c8c;
     border: none;
     padding: 8px 16px;
     border-radius: 6px;
-    color: white;
+    color: #1b2b49;
     cursor: pointer;
     font-size: 1rem;
     transition: background 0.3s;
+    margin-right: 40px;
   }
   
   .theme-toggle:hover {

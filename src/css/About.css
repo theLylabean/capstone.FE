@@ -1,0 +1,96 @@
+.about-page {
+  padding: 40px 20px;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  margin-top: 50px;
+}
+
+.intro-section {
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+  text-align: center;
+}
+
+.intro-section h1 {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.intro-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.team-section {
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: var(--accent);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  justify-items: center;
+}
+
+.team-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+  width: 100%;
+  max-width: 300px;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid var(--accent);
+}
+
+.team-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.team-card .role {
+  color: var(--accent);
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.team-card .responsibility {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.team-card a {
+  text-decoration: none;
+  color: white;
+  background: var(--accent);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.team-card a:hover {
+  background: var(--accent-hover);
+}
