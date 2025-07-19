@@ -10,15 +10,14 @@ margin-top: 70px;
     background-color: #1b2b49;
     color: #fdfaf6;
     border-bottom: 2px solid var(--accent);
-<<<<<<< Updated upstream
-=======
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size: 1.5rem;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
->>>>>>> Stashed changes
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 1.5rem;
   }
   
   .navbar-left a {

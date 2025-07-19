@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import "../../css/EventsResource.css";
+import { baseUrl } from "../../api/eventsIndex.js";
 
 function Events() {
   const [events, setEvents] = useState([]);
@@ -10,31 +11,33 @@ function Events() {
   const [editBody, setEditBody] = useState("");
 
   const token = localStorage.getItem("token");
-  const baseUrl = import.meta.env.VITE_API_URL;
+  const url = baseUrl;
 
   const decoded = token ? jwtDecode(token) : null;
   const user_id = decoded?.id;
   const username = decoded?.username;
 
-  useEffect(() => {
-    const fetchEvents = async () => {
+  const fetchEvents = async () => {
       try {
-        const res = await fetch(`${baseUrl}/events`);
-        const data = await res.json();
-        setEvents(data);
-      } catch (err) {
-        console.error("Error fetching events:", err);
-      }
+          const res = await fetch(`${url}/events`);
+          const data = await res.json();
+          setEvents(data);
+        } catch (err) {
+            console.error("Error fetching events:", err);
+            setEvents([])
+        }
     };
-    fetchEvents();
-  }, [baseUrl]);
+
+    useEffect(() => {
+        fetchEvents();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
 
     try {
-      const res = await fetch(`${baseUrl}/events`, {
+      const res = await fetch(`${url}/events`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,16 +47,14 @@ function Events() {
       });
 
       if (res.ok) {
-        const data = await res.json();
-        setEvents();
         setBody("");
+        fetchEvents();
       }
     } catch (err) {
       console.error(err);
       setError("An error occurred while creating the event.");
     }
   };
-
   
   const handleEdit = (id, body) => {
       setEditId(id);
@@ -62,13 +63,13 @@ function Events() {
     
     const handleUpdate = async (id) => {
         try {
-            const res = await fetch(`${baseUrl}/events/${id}`, {
+            const res = await fetch(`${url}/events/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify({ body: editBody }),
+                body: JSON.stringify({ body: editBody, user_id: Number(user_id), username: username, }),
             });
             
             if (res.ok) {
@@ -89,7 +90,7 @@ function Events() {
 
 const handleDelete = async (id) => {
   try {
-    const res = await fetch(`${baseUrl}/events/${id}`, {
+    const res = await fetch(`${url}/events/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -112,7 +113,7 @@ const handleDelete = async (id) => {
       <h1 className="">Events</h1>
 
       <div className="posts-list">
-        {events.length > 0 ? (
+        {events && events.length > 0 ? (
           events.map((event) => (
             <div className="post-card" key={event.id} style={{ marginBottom: "1rem" }}>
               <h2>{event.username}</h2>
@@ -128,7 +129,7 @@ const handleDelete = async (id) => {
                 </>
               ) : (
                 <>
-                  <p>{event.body}</p>
+                  <h3>{event.body}</h3>
                   <h4>{new Date(event.created_at).toLocaleDateString()}</h4>
                   {event.user_id === user_id && (
                     <div>
