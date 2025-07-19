@@ -39,6 +39,7 @@
 
 /* Each post is a CARD */
 .post-card {
+  width: 36rem;
   background: var(--comment-bg);
   border: 1px solid var(--accent);
   border-radius: 16px;
@@ -118,7 +119,8 @@
 
 /* Comment form styling */
 .comment-form {
-  margin-top: 20px;
+  width: 32rem;
+  margin-top: 30px;
   background: #fafafa;
   padding: 20px;
   border-radius: 12px;
@@ -126,7 +128,8 @@
 }
 
 .comment-form textarea {
-  width: 100%;
+  width: 90%;
+  max-width: 100%;
   min-height: 80px;
   padding: 12px;
   font-size: 1rem;
@@ -195,7 +198,8 @@
 
 .add-post-form input,
 .add-post-form textarea {
-  width: 100%;
+  width: 90%;
+  max-width: 100%;
   padding: 12px;
   font-size: 1rem;
   border-radius: 8px;
