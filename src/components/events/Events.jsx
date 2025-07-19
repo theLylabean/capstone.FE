@@ -55,7 +55,6 @@ function Events() {
       setError("An error occurred while creating the event.");
     }
   };
-
   
   const handleEdit = (id, body) => {
       setEditId(id);
