@@ -5,6 +5,14 @@
     padding: 40px 20px;
     background: var(--bg);
     color: var(--text);
+    min-height: 100vh;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 1.75rem;
+    margin-top: 50px;
+    /* min-height: 100vh; */
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 1.75rem;
+
     /* min-height: 100vh; */
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size: 1.75rem;
@@ -22,6 +30,7 @@
 .personal-info-card {
     color: black;
     font-size: 1.75rem;
+
 }
 
 .follow-container {
