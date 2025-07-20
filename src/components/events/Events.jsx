@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import "../../css/EventsResource.css";
+// import "../../css/lighthaven.css";
 import { baseUrl } from "../../api/eventsIndex.js";
 
 function Events() {

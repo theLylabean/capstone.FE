@@ -216,15 +216,3 @@ h1::after {
   background: linear-gradient(to right, #f28c8c, #f6e27f, #b5d8a9, #a7c7e7);
   border-radius: 2px;
 }
-
- input{
-        width: 90%;
-        max-width: 100%;
-        padding: 12px;
-        font-size: 1rem;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        resize: vertical;
-        transition: border-color 0.2s;
-        border-color: var(--accent);
- }
