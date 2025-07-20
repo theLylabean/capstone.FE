@@ -22,7 +22,7 @@
 /* Heading styling */
 .all-posts-page h1 {
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 5rem;
   color: var(--accent);
   margin-bottom: 30px;
   padding-bottom: 10px;
@@ -272,23 +272,17 @@
     #c9b6e4   /* violet */
   );
 }
-  /* box-shadow: 0 0 10px rgba(255, 255, 255, 0); initial shadow
-  animation: beam-glow 3s infinite ease-in-out;
-  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5);
-  box-shadow:
-  0 0 8px #f28c8c,
-  0 0 12px #f6e27f,
-  0 0 16px #b5d8a9,
-  0 0 20px #a7c7e7;
-
-@keyframes beam-glow {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0);
-  }
-  50% {
-    box-shadow: 0 0 20px 5px rgba(160, 130, 255, 0.5);
-  } */
 
 h6 {
   margin: 30px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-container img {
+  width: 450px;
+  height: auto;
 }
