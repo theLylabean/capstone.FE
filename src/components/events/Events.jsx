@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import "../../css/EventsResource.css";
+// import "../../css/lighthaven.css";
 import { baseUrl } from "../../api/eventsIndex.js";
 
 function Events() {
@@ -110,7 +111,7 @@ const handleDelete = async (id) => {
 
   return (
     <div className="all-posts-page">
-      <h1>Events</h1>
+      <h1 className="">Events</h1>
 
       <div className="posts-list">
         {events && events.length > 0 ? (
