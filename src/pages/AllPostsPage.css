@@ -237,3 +237,58 @@
 .lighthaven {
   font-family: 'Libre Baskerville', serif;
 }
+
+.intro {
+  text-align: center;
+  padding: 80px 20px 40px;
+  background-color: #fdfaf6;
+  color: #1b2b49;
+}
+
+.intro h1 {
+  font-family: 'Georgia', serif;
+  font-size: 2.75rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Rainbow underline */
+.rainbow-line {
+  height: 4px;
+  width: 750px;
+  margin: 10px auto;
+  border-radius: 2px;
+  background: linear-gradient(to right,
+    #f28c8c,  /* red */
+    #f6e27f,  /* yellow */
+    #b5d8a9,  /* green */
+    #a7c7e7,  /* blue */
+    #c9b6e4   /* violet */
+  );
+}
+  /* box-shadow: 0 0 10px rgba(255, 255, 255, 0); initial shadow
+  animation: beam-glow 3s infinite ease-in-out;
+  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5);
+  box-shadow:
+  0 0 8px #f28c8c,
+  0 0 12px #f6e27f,
+  0 0 16px #b5d8a9,
+  0 0 20px #a7c7e7;
+
+@keyframes beam-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(160, 130, 255, 0.5);
+  } */
+
+h6 {
+  margin: 30px;
+}

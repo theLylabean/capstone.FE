@@ -5,7 +5,6 @@
     padding: 40px 20px;
     background: var(--bg);
     color: var(--text);
-    min-height: 100vh;
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size: 1.75rem;
     margin-top: 50px;

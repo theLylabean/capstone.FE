@@ -94,3 +94,7 @@
 .team-card a:hover {
   background: var(--accent-hover);
 }
+
+p {
+  color: rgb(0, 125, 86);
+}

@@ -112,8 +112,9 @@ console.log('All posts:', posts);
   return (
     <div className="all-posts-page">
       <div>
-      <h1 className="lighthaven">Welcome to LightHaven</h1>
-      <h2 className="lighthaven">Your safe space to share, grow, and shine together.</h2>
+      <h1 className="lighthaven">Welcome to LightHaven
+        <h6 className="lighthaven">Your safe space to share, grow, and shine together.</h6>
+      </h1>
       </div>
       <h2>All Posts</h2>
       {token && (
