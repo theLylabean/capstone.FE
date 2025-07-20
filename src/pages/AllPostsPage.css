@@ -15,14 +15,13 @@
   padding: 40px 20px;
   background: var(--bg);
   color: var(--text);
-  min-height: 100vh;
   margin-top: 50px;
 }
 
 /* Heading styling */
 .all-posts-page h1 {
   text-align: center;
-  font-size: 5rem;
+  font-size: 4rem;
   color: var(--accent);
   margin-bottom: 30px;
   padding-bottom: 10px;
@@ -150,7 +149,6 @@
   font-size: 1rem;
   border: none;
   border-radius: 6px;
-  background: var(--button-bg);
   color: white;
   cursor: pointer;
   transition: background 0.3s;
@@ -234,8 +232,17 @@
   font-weight: bold;
 }
 
-.lighthaven {
+.lighthaven-container {
   font-family: 'Libre Baskerville', serif;
+  text-align: center;
+}
+
+.lighthaven-container h1 {
+  font-size: 4rem;
+}
+
+.lighthaven-container h6 {
+  font-size: 1.25rem;
 }
 
 .intro {
@@ -271,10 +278,6 @@
     #a7c7e7,  /* blue */
     #c9b6e4   /* violet */
   );
-}
-
-h6 {
-  margin: 30px;
 }
 
 .logo-container {

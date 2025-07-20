@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../api/eventsIndex.js";
 import { jwtDecode } from "jwt-decode";
+import '../../css/EventsResource.css';
 
 function Resources() {
   const [resources, setResources] = useState([]);
@@ -115,7 +116,7 @@ function Resources() {
   };
 
   return (
-    <div className="all-posts-page">
+    <div className="resources-page">
       <h1>Resources</h1>
 
       <div className="posts-list">
@@ -143,18 +144,16 @@ function Resources() {
       {/* AUTHENTICATED USERS ONLY */}
       <div>
         {token ? (
-          <form className="comment-form" onSubmit={handleSubmit}>
             <div>
-              <label>Title:</label>
+          <form className="resources-comment-form" onSubmit={handleSubmit}>
+              <label>Title:&nbsp;</label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
               />
-              <br />
-              <br />
-              <label>Body:</label>
+              <label>Body:&nbsp;</label>
               <textarea
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
@@ -176,8 +175,8 @@ function Resources() {
                 </button>
               )}
               {error && <p style={{ color: "red" }}>{error}</p>}
-            </div>
           </form>
+            </div>
         ) : (
           <p>Please log in to create a resource</p>
         )}

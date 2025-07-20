@@ -111,91 +111,96 @@ console.log('post.username:', posts.username);
 console.log('All posts:', posts);
 
   return (
-    <div className="all-posts-page">
-      <div>
+    <>
+      <div className="all-posts-page">
         <div className='logo-container'>
           <img src={logo} alt='Logo' />
         </div>
-        <h1 className="lighthaven">Welcome to LightHaven
-          <h6 className="lighthaven">Your safe space to share, grow, and shine together.</h6>
-        </h1>
+        <div className='lighthaven-container'>
+          <h1>Welcome to LightHaven</h1>
+          <h6>Your safe space to share, grow, and shine together.</h6>
+          <div className="rainbow-line" />
         </div>
-        <h2>All Posts</h2>
-        {token && (
-          <AddPost
-            token={token}
-            onPostAdded={(newPost) => setPosts([newPost, ...posts])}
-          />
-        )}
-        <div className="posts-list">
-          {posts.map((post) => (
-            <div className="post-card" key={post.id}>
-              <Link to={`/posts/${post.id}`}>
-                <h2>{post.title}</h2>
-              </Link>
-              <p>
-                <strong>Community:</strong> {post.community}
-              </p>
-              {currentUser?.id !== post.user_id && (
-                <HoverFollow targetUserId={post.user_id}>
-                  <p>
-                    <strong>By:</strong>{" "}
-                    <span className="follow-user">{post.username}</span>
-                  </p>
-                </HoverFollow>
-              )}
-              <p>{post.content}</p>
+      </div>
 
-              <div className="comments-section">
-                <h4>Comments:</h4>
-                {post.comments.length === 0 ? (
-                  <p>No comments yet.</p>
-                ) : (
-                  <ul>
-                    {post.comments.map((comment) => (
-                      <li key={comment.id} className="comment-item">
-                        <div className="avatar">
-                          {comment.username[0]?.toUpperCase()}
-                        </div>
-                        <div className="comment-content">
-                          <strong>{comment.username}</strong>
-                          <p>{comment.content}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
+      <div className='all-posts-page'>
+      <h2>All Posts</h2>
+      {token && (
+        <AddPost
+          token={token}
+          onPostAdded={(newPost) => setPosts([newPost, ...posts])}
+        />
+      )}
+      <div className="posts-list">
+        {posts.map((post) => (
+          <div className="post-card" key={post.id}>
+            <Link to={`/posts/${post.id}`}>
+              <h2>{post.title}</h2>
+            </Link>
+            <p>
+              <strong>Community:</strong> {post.community}
+            </p>
+            {currentUser?.id !== post.user_id && (
+              <HoverFollow targetUserId={post.user_id}>
+                <p>
+                  <strong>By:</strong>{" "}
+                  <span className="follow-user">{post.username}</span>
+                </p>
+              </HoverFollow>
+            )}
+            <p>{post.content}</p>
 
-              {token ? (
-                <form
-                  className="comment-form"
-                  onSubmit={(e) => handleAddComment(e, post.id)}
-                >
-                  <textarea
-                    value={newComment[post.id] || ""}
-                    onChange={(e) =>
-                      setNewComment((prev) => ({
-                        ...prev,
-                        [post.id]: e.target.value,
-                      }))
-                    }
-                    placeholder="Add your comment..."
-                    required
-                  />
-                  <button type="submit" disabled={posting[post.id]}>
-                    {posting[post.id] ? "Posting..." : "Add Comment"}
-                  </button>
-                  {postError[post.id] && (
-                    <p className="error-message">{postError[post.id]}</p>
-                  )}
-                </form>
+            <div className="comments-section">
+              <h4>Comments:</h4>
+              {post.comments.length === 0 ? (
+                <p>No comments yet.</p>
               ) : (
-                <p className="login-prompt">Please log in to add a comment.</p>
+                <ul>
+                  {post.comments.map((comment) => (
+                    <li key={comment.id} className="comment-item">
+                      <div className="avatar">
+                        {comment.username[0]?.toUpperCase()}
+                      </div>
+                      <div className="comment-content">
+                        <strong>{comment.username}</strong>
+                        <p>{comment.content}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
-          ))}
+
+            {token ? (
+              <form
+                className="comment-form"
+                onSubmit={(e) => handleAddComment(e, post.id)}
+              >
+                <textarea
+                  value={newComment[post.id] || ""}
+                  onChange={(e) =>
+                    setNewComment((prev) => ({
+                      ...prev,
+                      [post.id]: e.target.value,
+                    }))
+                  }
+                  placeholder="Add your comment..."
+                  required
+                />
+                <button type="submit" disabled={posting[post.id]}>
+                  {posting[post.id] ? "Posting..." : "Add Comment"}
+                </button>
+                {postError[post.id] && (
+                  <p className="error-message">{postError[post.id]}</p>
+                )}
+              </form>
+            ) : (
+              <p className="login-prompt">Please log in to add a comment.</p>
+            )}
+          </div>
+        ))}
         </div>
-    </div>
+      </div>
+    </>
   );
 }
