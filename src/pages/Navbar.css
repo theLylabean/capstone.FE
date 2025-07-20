@@ -3,26 +3,26 @@ margin-top: 70px;
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 24px;
-    background-color: #1b2b49;
-    color: #fdfaf6;
-    border-bottom: 2px solid var(--accent);
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-    font-size: 1.5rem;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #1b2b49;
+  color: #fdfaf6;
+  border-bottom: 2px solid var(--accent);
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem;
+  width: 100%;
+}
   
   .navbar-left a {
     margin-right: 16px;
     text-decoration: none;
     color: #fdfaf6;
-    font-weight: bold;
     transition: color 0.3s;
   }
   
