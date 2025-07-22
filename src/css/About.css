@@ -105,8 +105,9 @@
   opacity: 0.9;
 }
 
-p {
+.intro-section p {
   color: rgb(0, 125, 86);
+  font-size: 1.75rem;
 }
 
 /* Rainbow underline */

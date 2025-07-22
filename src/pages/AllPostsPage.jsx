@@ -118,7 +118,7 @@ export default function AllPostsPage({ currentUser, token }) {
       </div>
       <h2 className='all-posts-heading'><u>All Posts</u></h2>
       <div className='add-posts-container'>
-      {token && (
+      {token && currentUser && (
         <AddPost
           token={token}
           onPostAdded={(newPost) => setPosts([newPost, ...posts])}
