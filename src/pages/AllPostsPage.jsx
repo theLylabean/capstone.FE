@@ -112,7 +112,7 @@ console.log('All posts:', posts);
   return (
     <div className="all-posts-page">
       <div>
-      <h1 className="lighthaven">Welcome to LightHaven
+      <h1 className="lighthaven" style={{fontSize: "50px"}}>Welcome to LightHaven
         <h6 className="lighthaven">Your safe space to share, grow, and shine together.</h6>
       </h1>
       </div>
