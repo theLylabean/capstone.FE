@@ -15,6 +15,8 @@
   padding: 20px;
   background: var(--bg);
   color: var(--text);
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 1.75rem;
 }
 
 .add-posts-container {
@@ -24,9 +26,12 @@
   padding: 20px;
   background: var(--bg);
   color: var(--text);
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 1.75rem;
 }
 
 .all-posts-heading {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   font-size: 3rem;
   text-align: center;
 }

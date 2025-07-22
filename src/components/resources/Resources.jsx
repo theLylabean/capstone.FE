@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../api/eventsIndex.js";
 import { jwtDecode } from "jwt-decode";
+import logo from '../../images/logo.png';
 import '../../css/EventsResource.css';
 
 function Resources() {
@@ -117,7 +118,11 @@ function Resources() {
 
   return (
     <div className="resources-page">
-      <h1>Resources</h1>
+      <div className='resources-logo-container'>
+        <img src={logo} alt='Logo' />
+      </div>
+      <h1><u>Resources</u></h1>
+      <div className='resources-rainbow-line' />
 
       <div className="resources-posts-list">
         {resources && resources.length > 0 ? (

@@ -28,7 +28,7 @@ const Follows = () => {
         <>
             <div className='follow-container'>
                 <div className='follow-list'>
-                    <h3><u><b>Following</b></u></h3>
+                    <h2><u><b>Following</b></u></h2>
                     <ul>
                         {following.map((user) => (
                             <li key={user.id}>
@@ -38,7 +38,7 @@ const Follows = () => {
                     </ul>
                 </div>
                 <div className='follow-list'>
-                    <h3><u><b>Followers</b></u></h3>
+                    <h2><u><b>Followers</b></u></h2>
                     <ul>
                         {followers.map((user) => (
                             <li key={user.id}>

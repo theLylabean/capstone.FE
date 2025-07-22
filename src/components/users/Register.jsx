@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../css/Register.css";
 import { createUser } from "../../api/usersIndex";
+import logo from '../../images/logo.png';
+import "../../css/Register.css";
 
 
 const Register = ({ setToken, setCurrentUser }) => {
@@ -54,10 +55,19 @@ const Register = ({ setToken, setCurrentUser }) => {
 
     return (
         <>
-            <div className='form-container'>
-                <form className='form-columns' onSubmit={handleSubmit}>
-                    <div className='form-row'>
-                        <div className='form-field'>
+            <div className='register-header-container'>
+                <div className='register-logo-container'>
+                    <img src={logo} alt='Logo' />
+                </div>
+                <h2>
+                    <u>Sign Up!</u>
+                </h2>
+                <div className='register-rainbow-line' />
+            </div>
+            <div className='register-form-container'>
+                <form className='register-form-columns' onSubmit={handleSubmit}>
+                    <div className='register-form-row'>
+                        <div className='register-form-field'>
                             <label>First Name:&nbsp;</label>
                             <input 
                                 type='text'
@@ -67,7 +77,7 @@ const Register = ({ setToken, setCurrentUser }) => {
                                 placeholder='Enter First Name Here'
                             />
                         </div>
-                        <div className='form-field'>
+                        <div className='register-form-field'>
                             <label>Last Name:&nbsp;</label>
                             <input
                                 type='text'
@@ -78,8 +88,8 @@ const Register = ({ setToken, setCurrentUser }) => {
                             />
                         </div>
                     </div>
-                    <div className='form-row'>
-                        <div className='form-field'>
+                    <div className='register-form-row'>
+                        <div className='register-form-field'>
                             <label>Email:&nbsp;</label>
                             <input
                                 type='text'
@@ -89,7 +99,7 @@ const Register = ({ setToken, setCurrentUser }) => {
                                 placeholder='Enter Email Here'
                             />
                         </div>
-                        <div className='form-field'>
+                        <div className='register-form-field'>
                             <label>Username:&nbsp;</label>
                             <input
                                 type='text'
@@ -100,8 +110,8 @@ const Register = ({ setToken, setCurrentUser }) => {
                             />
                         </div>
                     </div>
-                    <div className='form-row'>
-                        <div className='form-field'>
+                    <div className='register-form-row'>
+                        <div className='register-form-field'>
                             <label>Password:&nbsp;</label>
                             <input
                                 type='password'
@@ -111,7 +121,7 @@ const Register = ({ setToken, setCurrentUser }) => {
                                 placeholder='Enter Password Here'
                             />
                         </div>
-                        <div className='form-field'>
+                        <div className='register-form-field'>
                             <label>Confirm Password:&nbsp;</label>
                             <input
                                 type='password'
@@ -122,21 +132,19 @@ const Register = ({ setToken, setCurrentUser }) => {
                             />
                         </div>
                     </div>
-                    <div className='form-button'>
-                        <button 
-                            type='submit'
-                            // disabled={
-                            //     !createUser.first_name ||
-                            //     !createUser.last_name ||
-                            //     !createUser.email ||
-                            //     !createUser.username ||
-                            //     !createUser.password ||
-                            //     !createUser.confirmPassword
-                            // }    
-                        >
-                            Create New User Account
-                        </button>
-                    </div>
+                    <button 
+                        type='submit'
+                        // disabled={
+                        //     !createUser.first_name ||
+                        //     !createUser.last_name ||
+                        //     !createUser.email ||
+                        //     !createUser.username ||
+                        //     !createUser.password ||
+                        //     !createUser.confirmPassword
+                        // }    
+                    >
+                        Create New User Account
+                    </button>
                 </form>
                 <div className='error-container'>
                     { signupError && <p className='error-message'>{ signupError }</p> }

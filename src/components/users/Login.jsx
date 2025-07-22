@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLogin } from '../../api/usersIndex';
+import logo from '../../images/logo.png';
 import "../../css/Login.css";
 
 const Login = ({ setCurrentUser, setToken }) => {
@@ -32,11 +33,15 @@ const Login = ({ setCurrentUser, setToken }) => {
         <>
             <div className='login-container'>
                 <div className='login-header-container'>
+                    <div className='login-logo-container'>
+                        <img src={logo} alt='Logo' />
+                    </div>
                     <h2>
-                        Login
+                        <u>Login</u>
                     </h2>
+                    <div className='login-rainbow-line' />
                 </div>
-                <form onSubmit={handleLoginSubmit}>
+                <form className='login-form' onSubmit={handleLoginSubmit}>
                     <div className='login-username'>
                         <label>Username:</label>
                         &nbsp;
