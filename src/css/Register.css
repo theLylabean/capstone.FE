@@ -65,7 +65,7 @@
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   font-weight: 600;
   margin-bottom: 6px;
-  color: #333;
+  color: var(--accent);
 }
 
 .register-form-field input {

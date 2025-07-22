@@ -31,7 +31,9 @@
 }
 
 .all-posts-heading {
-  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  margin-top: 0;
+  color: var(--accent);
+  margin-bottom: 16px;
   font-size: 3rem;
   text-align: center;
 }
@@ -172,6 +174,7 @@
   color: #1b2b49;
   cursor: pointer;
   transition: background 0.3s;
+  width: 100%;
 }
 
 .comment-form button:hover {
@@ -204,7 +207,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   transition: background 0.3s, transform 0.2s;
   margin-bottom: 32px;
-  width: 75rem;
+  width: 60rem;
   max-width: 100%;
   text-align: center;
 }
@@ -244,13 +247,14 @@
   margin-top: 12px;
   margin-right: 5px;
   padding: 10px 20px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   border: none;
   border-radius: 6px;
   background: #a7c7e7;
   color: #1b2b49;
   cursor: pointer;
   transition: background 0.3s;
+  width: 100%;
 }
 
 .add-post-form button:hover {
@@ -279,14 +283,14 @@
 
 /* Welcome tagline */
 .lighthaven-container h6 {
-  font-size: 1.50rem;
+  font-size: 1.75rem;
   margin: 0;
 }
 
 /* Rainbow underline */
 .rainbow-line {
   height: 4px;
-  width: 750px;
+  width: 1000px;
   margin: 10px auto;
   border-radius: 2px;
   background: linear-gradient(to right,

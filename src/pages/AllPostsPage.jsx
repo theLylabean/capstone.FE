@@ -165,7 +165,7 @@ export default function AllPostsPage({ currentUser, token }) {
               )}
             </div>
 
-            {token ? (
+            {token && currentUser ? (
               <form
                 className="comment-form"
                 onSubmit={(e) => handleAddComment(e, post.id)}

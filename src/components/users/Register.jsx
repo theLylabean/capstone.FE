@@ -68,7 +68,7 @@ const Register = ({ setToken, setCurrentUser }) => {
                 <form className='register-form-columns' onSubmit={handleSubmit}>
                     <div className='register-form-row'>
                         <div className='register-form-field'>
-                            <label>First Name:&nbsp;</label>
+                            <label><u>First Name</u>:&nbsp;</label>
                             <input 
                                 type='text'
                                 name='first_name'
@@ -78,7 +78,7 @@ const Register = ({ setToken, setCurrentUser }) => {
                             />
                         </div>
                         <div className='register-form-field'>
-                            <label>Last Name:&nbsp;</label>
+                            <label><u>Last Name</u>:&nbsp;</label>
                             <input
                                 type='text'
                                 name='last_name'
@@ -90,7 +90,7 @@ const Register = ({ setToken, setCurrentUser }) => {
                     </div>
                     <div className='register-form-row'>
                         <div className='register-form-field'>
-                            <label>Email:&nbsp;</label>
+                            <label><u>Email</u>:&nbsp;</label>
                             <input
                                 type='text'
                                 name='email'
@@ -100,7 +100,7 @@ const Register = ({ setToken, setCurrentUser }) => {
                             />
                         </div>
                         <div className='register-form-field'>
-                            <label>Username:&nbsp;</label>
+                            <label><u>Username</u>:&nbsp;</label>
                             <input
                                 type='text'
                                 name='username'
@@ -112,7 +112,7 @@ const Register = ({ setToken, setCurrentUser }) => {
                     </div>
                     <div className='register-form-row'>
                         <div className='register-form-field'>
-                            <label>Password:&nbsp;</label>
+                            <label><u>Password</u>:&nbsp;</label>
                             <input
                                 type='password'
                                 name='password'
@@ -122,7 +122,7 @@ const Register = ({ setToken, setCurrentUser }) => {
                             />
                         </div>
                         <div className='register-form-field'>
-                            <label>Confirm Password:&nbsp;</label>
+                            <label><u>Confirm Password</u>:&nbsp;</label>
                             <input
                                 type='password'
                                 name='confirmPassword'
