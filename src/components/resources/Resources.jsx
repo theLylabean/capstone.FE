@@ -119,7 +119,7 @@ function Resources() {
     <div className="resources-page">
       <h1>Resources</h1>
 
-      <div className="posts-list">
+      <div className="resources-posts-list">
         {resources && resources.length > 0 ? (
           resources.map((resource) => (
             <div className="post-card" key={resource.id}>

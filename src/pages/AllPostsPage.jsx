@@ -22,7 +22,6 @@ export default function AllPostsPage({ currentUser, token }) {
         return response.json();
       })
       .then(async (postsData) => {
-        console.log("🚨 postsData:", postsData);
         const postsWithComments = await Promise.all(
           postsData.map(async (post) => {
             const commentsRes = await fetch(
@@ -88,7 +87,7 @@ export default function AllPostsPage({ currentUser, token }) {
       );
       
       // If you want to log the updated post, do it here:
-      console.log('POST:', prevPosts.find(post => post.id === postId));
+      // console.log('POST:', prevPosts.find(post => post.id === postId));
 
       setNewComment((prev) => ({ ...prev, [postId]: "" }));
     } catch (err) {
@@ -105,14 +104,9 @@ export default function AllPostsPage({ currentUser, token }) {
   if (loading) return <div>Loading posts....</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  console.log('currentUser:', currentUser);
-console.log('post.userId:', posts.user_id);
-console.log('post.username:', posts.username);
-console.log('All posts:', posts);
-
   return (
     <>
-      <div className="all-posts-page">
+      <div className="all-posts-page-header-container">
         <div className='logo-container'>
           <img src={logo} alt='Logo' />
         </div>
@@ -122,20 +116,20 @@ console.log('All posts:', posts);
           <div className="rainbow-line" />
         </div>
       </div>
-
-      <div className='all-posts-page'>
-      <h2>All Posts</h2>
+      <h2 className='all-posts-heading'><u>All Posts</u></h2>
+      <div className='add-posts-container'>
       {token && (
         <AddPost
           token={token}
           onPostAdded={(newPost) => setPosts([newPost, ...posts])}
         />
       )}
+      </div>
       <div className="posts-list">
         {posts.map((post) => (
           <div className="post-card" key={post.id}>
             <Link to={`/posts/${post.id}`}>
-              <h2>{post.title}</h2>
+              <h2><u>{post.title}</u></h2>
             </Link>
             <p>
               <strong>Community:</strong> {post.community}
@@ -200,7 +194,6 @@ console.log('All posts:', posts);
           </div>
         ))}
         </div>
-      </div>
     </>
   );
 }

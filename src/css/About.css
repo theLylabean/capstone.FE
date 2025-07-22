@@ -1,13 +1,11 @@
 .about-page {
-  padding: 40px 20px;
+  padding: 20px;
   background: var(--bg);
   color: var(--text);
-  min-height: 100vh;
-  margin-top: 50px;
 }
 
 .intro-section {
-  max-width: 800px;
+  max-width: 1500px;
   margin: 0 auto 60px auto;
   text-align: center;
 }
@@ -19,12 +17,15 @@
 }
 
 .intro-section p {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   line-height: 1.6;
 }
 
 .team-section {
   text-align: center;
+  max-width: 100%;
+  width: 75rem;
+  margin: 2rem auto;
 }
 
 .team-section h2 {
@@ -97,4 +98,44 @@
 
 p {
   color: rgb(0, 125, 86);
+}
+
+/* Rainbow underline */
+.about-rainbow-line {
+  height: 4px;
+  width: 1500px;
+  margin: 10px auto;
+  border-radius: 2px;
+  background: linear-gradient(to right,
+    #f28c8c,  /* red */
+    #f6e27f,  /* yellow */
+    #b5d8a9,  /* green */
+    #a7c7e7,  /* blue */
+    #c9b6e4   /* violet */
+  );
+}
+
+/* Meet the dev team Rainbow underline */
+.about2-rainbow-line {
+  height: 4px;
+  width: auto;
+  margin: 10px auto;
+  border-radius: 2px;
+  background: linear-gradient(to right,
+    #f28c8c,  /* red */
+    #f6e27f,  /* yellow */
+    #b5d8a9,  /* green */
+    #a7c7e7,  /* blue */
+    #c9b6e4   /* violet */
+  );
+}
+
+.about-logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.about-logo-container img {
+  width: 350px;
+  height: auto;
 }
