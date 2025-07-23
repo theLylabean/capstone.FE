@@ -64,6 +64,7 @@ const AddPost = ({ token, onPostAdded }) => {
         onChange={(e) => setCommunity(e.target.value)}
       />
       <textarea
+        type='text'
         placeholder="Content"
         value={content}
         onChange={(e) => setContent(e.target.value)}

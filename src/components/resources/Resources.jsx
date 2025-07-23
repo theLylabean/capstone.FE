@@ -127,8 +127,8 @@ function Resources() {
       <div className="resources-posts-list">
         {resources && resources.length > 0 ? (
           resources.map((resource) => (
-            <div className="post-card" key={resource.id}>
-              <h2>{resource.title}</h2>
+            <div className="resources-post-card" key={resource.id}>
+              <h2><u>{resource.title}</u></h2>
               <h3>{resource.body}</h3>
 
               {user_id === resource.user_id && token && (
