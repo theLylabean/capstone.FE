@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import AddPost from "./Addpost";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AddPost from "./Addpost";
 import HoverFollow from '../components/follows/HoverFollow.jsx';
+import logo from '../images/logo.png';
 import "./AllpostsPage.css";
 
 export default function AllPostsPage({ currentUser, token }) {
@@ -21,7 +22,6 @@ export default function AllPostsPage({ currentUser, token }) {
         return response.json();
       })
       .then(async (postsData) => {
-        console.log("🚨 postsData:", postsData);
         const postsWithComments = await Promise.all(
           postsData.map(async (post) => {
             const commentsRes = await fetch(
@@ -87,7 +87,7 @@ export default function AllPostsPage({ currentUser, token }) {
       );
       
       // If you want to log the updated post, do it here:
-      console.log('POST:', prevPosts.find(post => post.id === postId));
+      // console.log('POST:', prevPosts.find(post => post.id === postId));
 
       setNewComment((prev) => ({ ...prev, [postId]: "" }));
     } catch (err) {
@@ -104,30 +104,32 @@ export default function AllPostsPage({ currentUser, token }) {
   if (loading) return <div>Loading posts....</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  console.log('currentUser:', currentUser);
-console.log('post.userId:', posts.user_id);
-console.log('post.username:', posts.username);
-console.log('All posts:', posts);
-
   return (
-    <div className="all-posts-page">
-      <div>
-      <h1 className="lighthaven" style={{fontSize: "50px"}}>Welcome to LightHaven
-        <h6 className="lighthaven">Your safe space to share, grow, and shine together.</h6>
-      </h1>
+    <>
+      <div className="all-posts-page-header-container">
+        <div className='logo-container'>
+          <img src={logo} alt='Logo' />
+        </div>
+        <div className='lighthaven-container'>
+          <h1>Welcome to LightHaven</h1>
+          <h6>Your safe space to share, grow, and shine together.</h6>
+          <div className="rainbow-line" />
+        </div>
       </div>
-      <h2>All Posts</h2>
-      {token && (
+      <h2 className='all-posts-heading'><u>All Posts</u></h2>
+      <div className='add-posts-container'>
+      {token && currentUser && (
         <AddPost
           token={token}
           onPostAdded={(newPost) => setPosts([newPost, ...posts])}
         />
       )}
+      </div>
       <div className="posts-list">
         {posts.map((post) => (
           <div className="post-card" key={post.id}>
             <Link to={`/posts/${post.id}`}>
-              <h2>{post.title}</h2>
+              <h2><u>{post.title}</u></h2>
             </Link>
             <p>
               <strong>Community:</strong> {post.community}
@@ -154,7 +156,7 @@ console.log('All posts:', posts);
                         {comment.username[0]?.toUpperCase()}
                       </div>
                       <div className="comment-content">
-                        <strong>{comment.username}</strong>
+                        <h3><strong>{comment.username}</strong></h3>
                         <p>{comment.content}</p>
                       </div>
                     </li>
@@ -163,7 +165,7 @@ console.log('All posts:', posts);
               )}
             </div>
 
-            {token ? (
+            {token && currentUser ? (
               <form
                 className="comment-form"
                 onSubmit={(e) => handleAddComment(e, post.id)}
@@ -191,7 +193,7 @@ console.log('All posts:', posts);
             )}
           </div>
         ))}
-      </div>
-    </div>
+        </div>
+    </>
   );
 }

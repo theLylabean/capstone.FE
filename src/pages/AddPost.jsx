@@ -49,7 +49,7 @@ const AddPost = ({ token, onPostAdded }) => {
 
   return (
     <form onSubmit={handleSubmit} className="add-post-form">
-      <h2>Create a New Post</h2>
+      <h2><u>Create a New Post</u></h2>
       {error && <p className="error-message">{error}</p>}
       <input
         type="text"
@@ -64,6 +64,7 @@ const AddPost = ({ token, onPostAdded }) => {
         onChange={(e) => setCommunity(e.target.value)}
       />
       <textarea
+        type='text'
         placeholder="Content"
         value={content}
         onChange={(e) => setContent(e.target.value)}

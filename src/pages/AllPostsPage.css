@@ -1,29 +1,36 @@
-:root {
-  --bg: #f4f4f4;
-  --text: #333;
-  --accent: #007bff;
-  --comment-bg: #ffffff;
-  --comment-hover: #f1f1f1;
-  --button-bg: #007bff;
-  --error: #ff4d4f;
-}
-
-.all-posts-page {
+.all-posts-page-header-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px;
+  padding: 20px;
   background: var(--bg);
   color: var(--text);
-  min-height: 100vh;
-  margin-top: 50px;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 1.75rem;
 }
 
-/* Heading styling */
-.all-posts-page h1 {
-  text-align: center;
-  font-size: 2.2rem;
+.add-posts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 1.75rem;
+}
+
+.all-posts-heading {
+  margin-top: 0;
   color: var(--accent);
+  margin-bottom: 16px;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.all-posts-page-container h2 {
+  font-size: 2rem;
+  text-align: center;
   margin: 100px;
 }
 
@@ -31,14 +38,17 @@
 .posts-list {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  width: 100%;
-  max-width: 700px;
+  align-items: center;
+  padding: 20px;
+  background: var(--bg);
+  color: var(--text);
+  gap: 35px;
+  text-align: center;
 }
 
 /* Each post is a CARD */
 .post-card {
-  width: 36rem;
+  width: 50rem;
   background: var(--comment-bg);
   border: 1px solid var(--accent);
   border-radius: 16px;
@@ -56,6 +66,7 @@
   margin-top: 0;
   color: var(--accent);
   margin-bottom: 12px;
+  font-size: 2rem;
 }
 
 .post-card a {
@@ -64,6 +75,7 @@
 }
 
 .post-card p {
+  font-size: 1.5rem;
   margin: 8px 0;
   line-height: 1.5;
   color: var(--text);
@@ -74,6 +86,10 @@
   margin-top: 20px;
   padding-top: 15px;
   border-top: 2px solid #ececec;
+}
+
+.comments-section h4 {
+  font-size: 1.5rem;
 }
 
 /* Comment item */
@@ -110,6 +126,10 @@
   flex: 1;
 }
 
+.comment-content h3 {
+  font-size: 1.6rem;
+}
+
 .comment-content strong {
   display: block;
   color: var(--accent);
@@ -118,7 +138,7 @@
 
 /* Comment form styling */
 .comment-form {
-  width: 32rem;
+  width: 48rem;
   margin-top: 30px;
   background: #fafafa;
   padding: 20px;
@@ -127,15 +147,14 @@
 }
 
 .comment-form textarea {
-  width: 90%;
-  max-width: 100%;
-  min-height: 80px;
+  width: 100%;
+  min-height: 100px;
   padding: 12px;
-  font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
   resize: vertical;
   transition: border-color 0.2s;
+  font-size: 1.50rem;
 }
 
 .comment-form textarea:focus {
@@ -145,14 +164,16 @@
 
 .comment-form button {
   margin-top: 12px;
+  margin-right: 5px;
   padding: 10px 20px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   border: none;
   border-radius: 6px;
-  background: var(--button-bg);
-  color: white;
+  background: #a7c7e7;
+  color: #1b2b49;
   cursor: pointer;
   transition: background 0.3s;
+  width: 100%;
 }
 
 .comment-form button:hover {
@@ -178,34 +199,40 @@
 
 /* Add post form — same styling as post card */
 .add-post-form {
+  margin-top: 20px;
+  width: 60rem;
   background: var(--comment-bg);
   border: 1px solid var(--accent);
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   transition: background 0.3s, transform 0.2s;
-  margin-bottom: 32px;
-  width: 100%;
-  max-width: 700px;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .add-post-form h2 {
   margin-top: 0;
   color: var(--accent);
   margin-bottom: 16px;
+  font-size: 2rem;
+  text-align: center;
 }
 
 .add-post-form input,
 .add-post-form textarea {
-  width: 90%;
-  max-width: 100%;
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  width: 60rem;
+  padding: 10px;
+  margin-top: 10px;
   margin-bottom: 12px;
-  background: #fff;
-  resize: vertical;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+.add-post-form textarea {
+  height: 10rem;
 }
 
 .add-post-form input:focus,
@@ -215,12 +242,17 @@
 }
 
 .add-post-form button {
-  padding: 12px 20px;
-  font-size: 1rem;
+  margin-top: 12px;
+  margin-right: 5px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
   border: none;
   border-radius: 6px;
+  background: #a7c7e7;
+  color: #1b2b49;
   cursor: pointer;
   transition: background 0.3s;
+  width: 100%;
 }
 
 .add-post-form button:hover {
@@ -233,34 +265,30 @@
   font-weight: bold;
 }
 
-.lighthaven {
+/* Welcome Container */
+.lighthaven-container {
   font-family: 'Libre Baskerville', serif;
-}
-
-.intro {
   text-align: center;
-  padding: 80px 20px 40px;
-  background-color: #fdfaf6;
-  color: #1b2b49;
 }
 
-.intro h1 {
-  font-family: 'Georgia', serif;
-  font-size: 2.75rem;
-  margin-bottom: 10px;
+/* Welcome heading */
+.lighthaven-container h1 {
+  font-size: 5rem;
+  text-align: center;
+  color: var(--accent);
+  margin: 2rem;
 }
 
-.subtitle {
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 1.25rem;
-  color: #333;
-  margin-bottom: 20px;
+/* Welcome tagline */
+.lighthaven-container h6 {
+  font-size: 1.75rem;
+  margin: 0;
 }
 
 /* Rainbow underline */
 .rainbow-line {
   height: 4px;
-  width: 750px;
+  width: 1000px;
   margin: 10px auto;
   border-radius: 2px;
   background: linear-gradient(to right,
@@ -271,24 +299,14 @@
     #c9b6e4   /* violet */
   );
 }
-  /* box-shadow: 0 0 10px rgba(255, 255, 255, 0); initial shadow
-  animation: beam-glow 3s infinite ease-in-out;
-  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.5);
-  box-shadow:
-  0 0 8px #f28c8c,
-  0 0 12px #f6e27f,
-  0 0 16px #b5d8a9,
-  0 0 20px #a7c7e7;
 
-@keyframes beam-glow {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0);
-  }
-  50% {
-    box-shadow: 0 0 20px 5px rgba(160, 130, 255, 0.5);
-  } */
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
 
-h6 {
-  margin: 30px;
+.logo-container img {
+  width: 350px;
+  height: auto;
   font-weight: 100;
 }

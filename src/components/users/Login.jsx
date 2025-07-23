@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getLogin } from '../../api/usersIndex';
+import logo from '../../images/logo.png';
 import "../../css/Login.css";
 
 const Login = ({ setCurrentUser, setToken }) => {
@@ -30,15 +31,19 @@ const Login = ({ setCurrentUser, setToken }) => {
 
     return (
         <>
-            <div className='login-container'>
-                <div className='login-header-container'>
-                    <h2>
-                        Login
-                    </h2>
+            <div className='login-header-container'>
+                <div className='login-logo-container'>
+                    <img src={logo} alt='Logo' />
                 </div>
-                <form onSubmit={handleLoginSubmit}>
+                <h2>
+                    <u>Login</u>
+                </h2>
+                <div className='login-rainbow-line' />
+            </div>
+            <div className='login-container'>
+                <form className='login-form' onSubmit={handleLoginSubmit}>
                     <div className='login-username'>
-                        <label>Username:</label>
+                        <label><u>Username</u>:</label>
                         &nbsp;
                         <input
                             className='form-username'
@@ -51,7 +56,7 @@ const Login = ({ setCurrentUser, setToken }) => {
                     </div>
                     <br />
                     <div className='login-password'>
-                        <label>Password:</label>
+                        <label><u>Password</u>:</label>
                         &nbsp;
                         <input
                             className='form-password'

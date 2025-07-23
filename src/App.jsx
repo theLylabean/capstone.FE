@@ -1,19 +1,17 @@
 import { Routes, Route } from "react-router-dom";
-import AllPostsPage from "./pages/AllPostsPage";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import { getAccount } from "./api/usersIndex.js";
+import AllPostsPage from "./pages/AllPostsPage.jsx";
 import Register from "./components/users/Register.jsx";
 import Login from "./components/users/Login.jsx";
 import Account from "./components/users/Account.jsx";
 import About from "./components/UI/About.jsx";
-// import Home from './components/UI/Home.jsx';
 import Navbar from "./components/UI/NavBar.jsx";
-//import Footer from "./components/UI/Footer.jsx";
 import Events from "./components/events/Events.jsx";
 import Resources from "./components/resources/Resources.jsx";
 import PostDetailsPage from "./pages/PostDetailsPage.jsx";
-import { getAccount } from "./api/usersIndex.js";
-import "./css/App.css";
+//import Footer from "./components/UI/Footer.jsx";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
@@ -58,7 +56,7 @@ function App() {
       <main className="app-content">
         <Routes>
   {       /*  <Route path="/" element={<AllPostsPage />} /> */}
-          <Route path="/" element={<AllPostsPage token={token} />} />
+          <Route path="/" element={<AllPostsPage token={token} currentUser={currentUser} />} />
           <Route 
             path="/register" 
             element={

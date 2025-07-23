@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../api/eventsIndex.js";
 import { jwtDecode } from "jwt-decode";
+import logo from '../../images/logo.png';
+import '../../css/EventsResource.css';
 
 function Resources() {
   const [resources, setResources] = useState([]);
@@ -115,14 +117,18 @@ function Resources() {
   };
 
   return (
-    <div className="all-posts-page">
-      <h1>Resources</h1>
+    <div className="resources-page">
+      <div className='resources-logo-container'>
+        <img src={logo} alt='Logo' />
+      </div>
+      <h1><u>Resources</u></h1>
+      <div className='resources-rainbow-line' />
 
-      <div className="posts-list">
+      <div className="resources-posts-list">
         {resources && resources.length > 0 ? (
           resources.map((resource) => (
-            <div className="post-card" key={resource.id}>
-              <h2>{resource.title}</h2>
+            <div className="resources-post-card" key={resource.id}>
+              <h2><u>{resource.title}</u></h2>
               <h3>{resource.body}</h3>
 
               {user_id === resource.user_id && token && (
@@ -143,18 +149,16 @@ function Resources() {
       {/* AUTHENTICATED USERS ONLY */}
       <div>
         {token ? (
-          <form className="comment-form" onSubmit={handleSubmit}>
             <div>
-              <label>Title:</label>
+          <form className="resources-comment-form" onSubmit={handleSubmit}>
+              <label>Title:&nbsp;</label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
               />
-              <br />
-              <br />
-              <label>Body:</label>
+              <label>Body:&nbsp;</label>
               <textarea
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
@@ -176,8 +180,8 @@ function Resources() {
                 </button>
               )}
               {error && <p style={{ color: "red" }}>{error}</p>}
-            </div>
           </form>
+            </div>
         ) : (
           <p>Please log in to create a resource</p>
         )}
