@@ -63,7 +63,7 @@ const About = () => {
               <img src={member.image} alt={`${member.name}'s avatar`} />
               <h2><u>{member.name}</u></h2>
               <p className="role">{member.role}</p>
-              <p className="responsibility"><u>My Role</u>:<br />{member.responsibility}</p>
+              <p className="responsibility"><u>My Job</u>:<br />{member.responsibility}</p>
               <a href={member.github} target="_blank" rel="noreferrer">
                 Visit GitHub
               </a>
