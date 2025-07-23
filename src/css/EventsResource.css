@@ -29,6 +29,7 @@
   cursor: pointer;
   transition: background 0.3s;
   width: 100%;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .resources-page {
@@ -51,6 +52,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   transition: background 0.3s, transform 0.2s;
   margin: 2rem;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .resources-post-card button {
@@ -114,6 +116,7 @@
   margin-bottom: 16px;
   font-size: 3rem;
   text-align: center;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .add-events-form {
@@ -128,6 +131,7 @@
   max-width: 100%;
   text-align: center;
   margin: 0 auto;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .add-events-form h2 {
@@ -136,20 +140,20 @@
   margin-bottom: 16px;
   font-size: 3rem;
   text-align: center;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .add-events-form input,
 .add-events-form textarea {
-  width: 75rem;
-  max-width: 100%;
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  width: 50rem;
+  padding: 10px;
+  margin-top: 10px;
   margin-bottom: 12px;
-  background: #fff;
-  resize: vertical;
-  font-size: 1.50rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .add-events-form textarea {
@@ -174,6 +178,7 @@
   cursor: pointer;
   transition: background 0.3s;
   width: 100%;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .add-events-form button:hover {
@@ -184,6 +189,7 @@
   color: var(--error);
   margin-bottom: 10px;
   font-weight: bold;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .events-page-container {
@@ -203,6 +209,7 @@
   margin-bottom: 16px;
   font-size: 3rem;
   text-align: center;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 /* Feed container with vertical spacing */
@@ -215,6 +222,7 @@
   color: var(--text);
   gap: 35px;
   text-align: center;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 /* Each post is a CARD */
@@ -226,6 +234,7 @@
   padding: 24px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   transition: background 0.3s, transform 0.2s;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .events-post-card:hover {
@@ -239,6 +248,7 @@
   margin-bottom: 16px;
   font-size: 3rem;
   text-align: center;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .events-post-card a {
@@ -251,6 +261,7 @@
   margin: 8px 0;
   line-height: 1.5;
   color: var(--text);
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .events-post-card button {
@@ -265,6 +276,7 @@
   cursor: pointer;
   transition: background 0.3s;
   width: 100%;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .events-all-posts-page h1 {
@@ -273,6 +285,7 @@
   margin-bottom: 16px;
   font-size: 3rem;
   text-align: center;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .events-rainbow-line {

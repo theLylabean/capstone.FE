@@ -15,6 +15,7 @@
   margin-bottom: 16px;
   font-size: 3rem;
   text-align: center;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .login-header-container {
@@ -71,15 +72,14 @@
 .login-form input,
 .login-form textarea {
   width: 50rem;
-  max-width: 100%;
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
   margin-bottom: 12px;
-  background: #fff;
-  resize: vertical;
-  font-size: 1.50rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .login-form textarea {
@@ -103,6 +103,7 @@
   color: #1b2b49;
   cursor: pointer;
   transition: background 0.3s;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .login-form button:hover {
@@ -113,6 +114,7 @@
   color: var(--error);
   margin-bottom: 10px;
   font-weight: bold;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .login-rainbow-line {

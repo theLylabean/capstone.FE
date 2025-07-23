@@ -70,14 +70,14 @@
 
 .register-form-field input {
   width: 25rem;
-  max-width: 100%;
-  padding: 12px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
   margin-bottom: 12px;
-  background: #fff;
-  font-size: 1.50rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .register-form input:focus {
@@ -97,6 +97,7 @@
   cursor: pointer;
   transition: background 0.3s;
   align-items: center;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .register-form-button button:hover {

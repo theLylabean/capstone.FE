@@ -17,6 +17,7 @@
     background: var(--button-bg);
     color: white;
     cursor: pointer;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .follow-user:hover {

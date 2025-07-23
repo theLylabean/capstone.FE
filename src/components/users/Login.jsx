@@ -43,8 +43,7 @@ const Login = ({ setCurrentUser, setToken }) => {
             <div className='login-container'>
                 <form className='login-form' onSubmit={handleLoginSubmit}>
                     <div className='login-username'>
-                        <label><u>Username</u>:</label>
-                        &nbsp;
+                        <label><u>Username</u>:&nbsp;</label>
                         <input
                             className='form-username'
                             type='text'
@@ -52,12 +51,12 @@ const Login = ({ setCurrentUser, setToken }) => {
                             name='username'
                             value={username}
                             onChange={ e => setUsername(e.target.value) }
+                            placeholder='Enter Username Here'
                         />
                     </div>
                     <br />
                     <div className='login-password'>
-                        <label><u>Password</u>:</label>
-                        &nbsp;
+                        <label><u>Password</u>:&nbsp;</label>
                         <input
                             className='form-password'
                             type='password'
@@ -65,6 +64,7 @@ const Login = ({ setCurrentUser, setToken }) => {
                             name='password'
                             value={password}
                             onChange={ e => setPassword(e.target.value) }
+                            placeholder='Enter Password Here'
                         />
                         {loginError && <p>{loginError}</p>}
                         <br />

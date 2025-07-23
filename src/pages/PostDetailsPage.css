@@ -25,7 +25,7 @@
 body {
   background: var(--bg);
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   color: var(--text);
   transition: background 0.3s, color 0.3s;
 }
