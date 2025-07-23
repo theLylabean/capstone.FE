@@ -31,6 +31,7 @@
 .all-posts-page-container h2 {
   font-size: 2rem;
   text-align: center;
+  margin: 100px;
 }
 
 /* Feed container with vertical spacing */
@@ -307,4 +308,5 @@
 .logo-container img {
   width: 350px;
   height: auto;
+  font-weight: 100;
 }

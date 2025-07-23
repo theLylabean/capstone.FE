@@ -12,7 +12,6 @@ import Events from "./components/events/Events.jsx";
 import Resources from "./components/resources/Resources.jsx";
 import PostDetailsPage from "./pages/PostDetailsPage.jsx";
 //import Footer from "./components/UI/Footer.jsx";
-import "./css/App.css";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
