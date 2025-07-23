@@ -156,7 +156,7 @@ export default function AllPostsPage({ currentUser, token }) {
                         {comment.username[0]?.toUpperCase()}
                       </div>
                       <div className="comment-content">
-                        <strong>{comment.username}</strong>
+                        <h3><strong>{comment.username}</strong></h3>
                         <p>{comment.content}</p>
                       </div>
                     </li>

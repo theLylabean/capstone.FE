@@ -97,6 +97,10 @@
   border-top: 2px solid #ececec;
 }
 
+.comments-section h4 {
+  font-size: 1.5rem;
+}
+
 /* Comment item */
 .comment-item {
   display: flex;
@@ -129,6 +133,10 @@
 
 .comment-content {
   flex: 1;
+}
+
+.comment-content h3 {
+  font-size: 1.6rem;
 }
 
 .comment-content strong {
