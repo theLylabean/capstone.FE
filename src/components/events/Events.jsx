@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import { baseUrl } from "../../api/eventsIndex.js";
 import { jwtDecode } from "jwt-decode";
 import "../../css/EventsResource.css";
 // import "../../css/lighthaven.css";
-import { baseUrl } from "../../api/eventsIndex.js";
+import logo from '../../images/logo.png';
 
 function Events() {
   const [events, setEvents] = useState([]);
@@ -110,14 +111,33 @@ const handleDelete = async (id) => {
 };
 
   return (
-    <div className="all-posts-page">
-      <h1 className="">Events</h1>
+    <div className="events-page-container">
+      <div className='events-logo-container'>
+        <img src={logo} alt='Logo' />
+      </div>
+      <h1><u>Events</u></h1>
+      <div className='events-rainbow-line' />
 
-      <div className="posts-list">
+        {token ? (
+        <form className="add-events-form" onSubmit={handleSubmit}>
+          <label>Event Description:</label>
+          <textarea
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+            required
+          />
+          <button type="submit">Create Event</button>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </form>
+      ) : (
+        <p>Please log in to create an event.</p>
+      )}
+
+      <div className="events-posts-list">
         {events && events.length > 0 ? (
           events.map((event) => (
-            <div className="post-card" key={event.id} style={{ marginBottom: "1rem" }}>
-              <h2>{event.username}</h2>
+            <div className="events-post-card" key={event.id} style={{ marginBottom: "1rem" }}>
+              <h2><u>{event.username}</u></h2>
 
               {editId === event.id ? (
                 <>
@@ -150,21 +170,6 @@ const handleDelete = async (id) => {
           <p>No events to show.</p>
         )}
       </div>
-
-      {token ? (
-        <form className="comment-form" onSubmit={handleSubmit}>
-          <label>Event Description:</label>
-          <textarea
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-            required
-          />
-          <button type="submit">Create Event</button>
-          {error && <p style={{ color: "red" }}>{error}</p>}
-        </form>
-      ) : (
-        <p>Please log in to create an event.</p>
-      )}
     </div>
   );
 }

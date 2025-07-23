@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../css/Register.css";
 import { createUser } from "../../api/usersIndex";
+import logo from '../../images/logo.png';
+import "../../css/Register.css";
 
 
 const Register = ({ setToken, setCurrentUser }) => {
@@ -54,11 +55,20 @@ const Register = ({ setToken, setCurrentUser }) => {
 
     return (
         <>
-            <div className='form-container'>
-                <form className='form-columns' onSubmit={handleSubmit}>
-                    <div className='form-row'>
-                        <div className='form-field'>
-                            <label>First Name:&nbsp;</label>
+            <div className='register-header-container'>
+                <div className='register-logo-container'>
+                    <img src={logo} alt='Logo' />
+                </div>
+                <h2>
+                    <u>Sign Up!</u>
+                </h2>
+                <div className='register-rainbow-line' />
+            </div>
+            <div className='register-form-container'>
+                <form className='register-form-columns' onSubmit={handleSubmit}>
+                    <div className='register-form-row'>
+                        <div className='register-form-field'>
+                            <label><u>First Name</u>:&nbsp;</label>
                             <input 
                                 type='text'
                                 name='first_name'
@@ -67,8 +77,8 @@ const Register = ({ setToken, setCurrentUser }) => {
                                 placeholder='Enter First Name Here'
                             />
                         </div>
-                        <div className='form-field'>
-                            <label>Last Name:&nbsp;</label>
+                        <div className='register-form-field'>
+                            <label><u>Last Name</u>:&nbsp;</label>
                             <input
                                 type='text'
                                 name='last_name'
@@ -78,9 +88,9 @@ const Register = ({ setToken, setCurrentUser }) => {
                             />
                         </div>
                     </div>
-                    <div className='form-row'>
-                        <div className='form-field'>
-                            <label>Email:&nbsp;</label>
+                    <div className='register-form-row'>
+                        <div className='register-form-field'>
+                            <label><u>Email</u>:&nbsp;</label>
                             <input
                                 type='text'
                                 name='email'
@@ -89,8 +99,8 @@ const Register = ({ setToken, setCurrentUser }) => {
                                 placeholder='Enter Email Here'
                             />
                         </div>
-                        <div className='form-field'>
-                            <label>Username:&nbsp;</label>
+                        <div className='register-form-field'>
+                            <label><u>Username</u>:&nbsp;</label>
                             <input
                                 type='text'
                                 name='username'
@@ -100,9 +110,9 @@ const Register = ({ setToken, setCurrentUser }) => {
                             />
                         </div>
                     </div>
-                    <div className='form-row'>
-                        <div className='form-field'>
-                            <label>Password:&nbsp;</label>
+                    <div className='register-form-row'>
+                        <div className='register-form-field'>
+                            <label><u>Password</u>:&nbsp;</label>
                             <input
                                 type='password'
                                 name='password'
@@ -111,8 +121,8 @@ const Register = ({ setToken, setCurrentUser }) => {
                                 placeholder='Enter Password Here'
                             />
                         </div>
-                        <div className='form-field'>
-                            <label>Confirm Password:&nbsp;</label>
+                        <div className='register-form-field'>
+                            <label><u>Confirm Password</u>:&nbsp;</label>
                             <input
                                 type='password'
                                 name='confirmPassword'
@@ -122,21 +132,19 @@ const Register = ({ setToken, setCurrentUser }) => {
                             />
                         </div>
                     </div>
-                    <div className='form-button'>
-                        <button 
-                            type='submit'
-                            // disabled={
-                            //     !createUser.first_name ||
-                            //     !createUser.last_name ||
-                            //     !createUser.email ||
-                            //     !createUser.username ||
-                            //     !createUser.password ||
-                            //     !createUser.confirmPassword
-                            // }    
-                        >
-                            Create New User Account
-                        </button>
-                    </div>
+                    <button 
+                        type='submit'
+                        // disabled={
+                        //     !createUser.first_name ||
+                        //     !createUser.last_name ||
+                        //     !createUser.email ||
+                        //     !createUser.username ||
+                        //     !createUser.password ||
+                        //     !createUser.confirmPassword
+                        // }    
+                    >
+                        Create New User Account
+                    </button>
                 </form>
                 <div className='error-container'>
                     { signupError && <p className='error-message'>{ signupError }</p> }

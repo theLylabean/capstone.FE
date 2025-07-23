@@ -1,3 +1,4 @@
+import logo from '../../images/logo.png';
 import "../../css/About.css";
 
 const team = [
@@ -27,8 +28,12 @@ const team = [
 const About = () => {
   return (
     <div className="about-page">
+      <div className='about-logo-container'>
+        <img src={logo} alt='Logo' />
+      </div>
       <section className="intro-section">
-        <h1>About Our Platform</h1>
+        <h1><u>About Our Platform</u></h1>
+        <div className='about-rainbow-line' />
         <p>
           Welcome to our platform — a safe, inclusive, and creative space
           designed for everyone. Whether you’re here to explore, express, or
@@ -49,12 +54,14 @@ const About = () => {
       </section>
 
       <section className="team-section">
-        <h2>Meet the Dev Team</h2>
+        <h2><u>Meet the Dev Team</u></h2>
+        <div className='about2-rainbow-line' />
+        <br />
         <div className="team-grid">
           {team.map((member) => (
             <div className="team-card" key={member.name}>
               <img src={member.image} alt={`${member.name}'s avatar`} />
-              <h3>{member.name}</h3>
+              <h2><u>{member.name}</u></h2>
               <p className="role">{member.role}</p>
               {/* <p className="responsibility">{member.responsibility}</p> */}
               <a href={member.github} target="_blank" rel="noreferrer">
