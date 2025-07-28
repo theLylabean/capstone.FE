@@ -5,7 +5,7 @@
   background: var(--bg);
   color: var(--text);
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   text-align: center;
 }
 
@@ -13,7 +13,7 @@
   margin-top: 0;
   color: var(--accent);
   margin-bottom: 16px;
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 17px;
   background: var(--bg);
   color: var(--text);
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
@@ -49,11 +49,11 @@
   background: var(--comment-bg);
   border: 1px solid var(--accent);
   border-radius: 16px;
-  padding: 20px;
+  padding: 17px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   transition: background 0.3s, transform 0.2s;
   margin-bottom: 32px;
-  width: 50rem;
+  width: 45rem;
   max-width: 100%;
   text-align: center;
 }
@@ -71,13 +71,13 @@
 
 .login-form input,
 .login-form textarea {
-  width: 50rem;
-  padding: 10px;
+  width: 45rem;
+  padding: 7px;
   margin-top: 10px;
   margin-bottom: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   box-sizing: border-box;
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
@@ -96,7 +96,7 @@
   margin-top: 12px;
   margin-right: 5px;
   padding: 10px 20px;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   border: none;
   border-radius: 6px;
   background: #a7c7e7;
@@ -119,7 +119,7 @@
 
 .login-rainbow-line {
     height: 4px;
-    width: 1000px;
+    width: 800px;
     margin: 10px auto;
     border-radius: 2px;
     background: linear-gradient(to right,
@@ -137,6 +137,6 @@
 }
 
 .login-logo-container img {
-    width: 350px;
+    width: 250px;
     height: auto;
 }

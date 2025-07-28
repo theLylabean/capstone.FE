@@ -117,22 +117,6 @@ const handleDelete = async (id) => {
       </div>
       <h1><u>Events</u></h1>
       <div className='events-rainbow-line' />
-
-        {token ? (
-        <form className="add-events-form" onSubmit={handleSubmit}>
-          <label>Event Description:</label>
-          <textarea
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-            required
-          />
-          <button type="submit">Create Event</button>
-          {error && <p style={{ color: "red" }}>{error}</p>}
-        </form>
-      ) : (
-        <p>Please log in to create an event.</p>
-      )}
-
       <div className="events-posts-list">
         {events && events.length > 0 ? (
           events.map((event) => (
@@ -170,6 +154,20 @@ const handleDelete = async (id) => {
           <p>No events to show.</p>
         )}
       </div>
+      {token ? (
+        <form className="add-events-form" onSubmit={handleSubmit}>
+          <label>Event Description:</label>
+          <textarea
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+            required
+          />
+          <button type="submit">Create Event</button>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </form>
+      ) : (
+        <p>Please log in to create an event.</p>
+      )}
     </div>
   );
 }

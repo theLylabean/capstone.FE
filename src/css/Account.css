@@ -2,11 +2,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 17px;
     background: var(--bg);
     color: var(--text);
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-    font-size: 1.75rem;
 }
 
 .account-page-container h1 {
@@ -19,7 +18,7 @@
 }
 
 .personal-info-container {
-    width: 50rem;
+    width: 45rem;
     background: var(--comment-bg);
     border: 1px solid var(--accent);
     border-radius: 16px;
@@ -41,7 +40,7 @@
 }
 
 .personal-info-container p {
-    font-size: 2rem;
+    font-size: 1.75rem;
     margin: 8px 0;
     line-height: 1.5;
     color: var(--text);
@@ -53,19 +52,17 @@
     gap: 2rem;
     justify-content: center;
     align-items: flex-start;
-    margin-top: 2rem;
     flex-wrap: wrap;
     text-align: center;
     padding: 20px;
     background: var(--bg);
     color: var(--text);
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-    font-size: 1.75rem;
 }
 
 .follow-list {
     flex: 1fr 1fr;
-    width: 25rem;
+    width: 20rem;
     background: var(--comment-bg);
     border: 1px solid var(--accent);
     border-radius: 16px;
@@ -84,7 +81,7 @@
     margin-top: 0;
     color: var(--accent);
     margin-bottom: 12px;
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
@@ -97,7 +94,7 @@
 .follow-list li {
     padding: 0.5rem 0;
     border-bottom: 1px solid #eee;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin: 8px 0;
     line-height: 1.5;
     color: var(--text);
@@ -142,6 +139,6 @@
 }
 
 .account-logo-container img {
-    width: 350px;
+    width: 250px;
     height: auto;
 }

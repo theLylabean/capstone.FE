@@ -2,37 +2,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 17px;
   background: var(--bg);
   color: var(--text);
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-  font-size: 1.75rem;
 }
 
 .add-posts-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
   background: var(--bg);
   color: var(--text);
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 
 .all-posts-heading {
   margin-top: 0;
   color: var(--accent);
   margin-bottom: 16px;
-  font-size: 3rem;
-  text-align: center;
-  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-}
-
-.all-posts-page-container h2 {
   font-size: 2rem;
   text-align: center;
-  margin: 100px;
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
@@ -41,20 +32,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 17px;
   background: var(--bg);
   color: var(--text);
-  gap: 35px;
+  gap: 25px;
   text-align: center;
 }
 
 /* Each post is a CARD */
 .post-card {
-  width: 50rem;
+  width: 40rem;
   background: var(--comment-bg);
   border: 1px solid var(--accent);
   border-radius: 16px;
-  padding: 24px;
+  padding: 20px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   transition: background 0.3s, transform 0.2s;
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
@@ -69,7 +60,7 @@
   margin-top: 0;
   color: var(--accent);
   margin-bottom: 12px;
-  font-size: 2rem;
+  font-size: 1.75rem;
 }
 
 .post-card a {
@@ -78,7 +69,7 @@
 }
 
 .post-card p {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin: 8px 0;
   line-height: 1.5;
   color: var(--text);
@@ -87,17 +78,17 @@
 /* Comments section separator */
 .comments-section {
   margin-top: 20px;
-  padding-top: 15px;
   border-top: 2px solid #ececec;
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .comments-section h4 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 /* Comment item */
 .comment-item {
+  width: 30rem;
   display: flex;
   align-items: flex-start;
   background: var(--comment-bg);
@@ -131,7 +122,11 @@
 }
 
 .comment-content h3 {
-  font-size: 1.6rem;
+  font-size: 1.25rem;
+}
+
+.comment-content p {
+  font-size: 1rem;
 }
 
 .comment-content strong {
@@ -143,24 +138,22 @@
 
 /* Comment form styling */
 .comment-form {
-  width: 48rem;
+  width: 100%;
   margin-top: 30px;
-  background: #fafafa;
-  padding: 20px;
   border-radius: 12px;
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .comment-form textarea {
-  width: 100%;
-  min-height: 100px;
-  padding: 12px;
-  border-radius: 8px;
+  width: 40rem;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 12px;
   border: 1px solid #ccc;
-  resize: vertical;
-  transition: border-color 0.2s;
-  font-size: 1.50rem;
+  border-radius: 6px;
+  font-size: 1.25rem;
+  box-sizing: border-box;
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
@@ -173,7 +166,7 @@
   margin-top: 12px;
   margin-right: 5px;
   padding: 10px 20px;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   border: none;
   border-radius: 6px;
   background: #a7c7e7;
@@ -207,8 +200,7 @@
 
 /* Add post form — same styling as post card */
 .add-post-form {
-  margin-top: 20px;
-  width: 60rem;
+  width: 45rem;
   background: var(--comment-bg);
   border: 1px solid var(--accent);
   border-radius: 16px;
@@ -222,19 +214,19 @@
   margin-top: 0;
   color: var(--accent);
   margin-bottom: 16px;
-  font-size: 2rem;
+  font-size: 1.75rem;
   text-align: center;
 }
 
 .add-post-form input,
 .add-post-form textarea {
-  width: 60rem;
+  width: 45rem;
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   box-sizing: border-box;
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
@@ -253,7 +245,7 @@
   margin-top: 12px;
   margin-right: 5px;
   padding: 10px 20px;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   border: none;
   border-radius: 6px;
   background: #a7c7e7;
@@ -282,7 +274,7 @@
 
 /* Welcome heading */
 .lighthaven-container h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   text-align: center;
   color: var(--accent);
   margin: 2rem;
@@ -290,14 +282,14 @@
 
 /* Welcome tagline */
 .lighthaven-container h6 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   margin: 0;
 }
 
 /* Rainbow underline */
 .rainbow-line {
   height: 4px;
-  width: 1000px;
+  width: 800px;
   margin: 10px auto;
   border-radius: 2px;
   background: linear-gradient(to right,
@@ -315,7 +307,7 @@
 }
 
 .logo-container img {
-  width: 350px;
+  width: 250px;
   height: auto;
   font-weight: 100;
 }
